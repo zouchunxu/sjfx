@@ -752,19 +752,16 @@ Purchase: http://wrapbootstrap.com
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
-                        <li>
-                            <i class="fa fa-home"></i>
-                            <a href="#">Home</a>
+                        <li id="title">
                         </li>
-                        <li class="active">Dashboard</li>
+                        <li class="active" id="twotitle"></li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Header -->
                 <div class="page-header position-relative">
                     <div class="header-title">
-                        <h1>
-                            Dashboard
+                        <h1 id="twotitle_s">
                         </h1>
                     </div>
                     <!--Header Buttons-->
@@ -822,16 +819,20 @@ Purchase: http://wrapbootstrap.com
 
     <script>
         var AdminIndexUrl = '{{ $url }}';
+        var title = '{{ $title or '' }}';
+        var twotitle = '{{ $twotitle or '' }}';
         $('.nav li a').each(function(){
             if(typeof $(this).attr('href') == 'string' && AdminIndexUrl.match($(this).attr('href'))){
                 $(this).parent().addClass('active');
                 $(this).parent().parents('li').addClass('open');
-                var title = $(this).parent().parents('li').children(0).html();
-                var twotitle = $(this).parent().children(0).html();
+                title = title ? title : $(this).parent().parents('li').children(0).html();
+                twotitle = twotitle ? twotitle : $(this).parent().children(0).html();
             }
         });
-
-
+        $('#title').html(title);
+        $("#twotitle").html(twotitle);
+        $("#twotitle_s").html(twotitle);
+        $("#title").children(0).remove('.menu-expand');
         // If you want to draw your charts with Theme colors you must run initiating charts after that current skin is loaded
         $(window).bind("load", function () {
 
