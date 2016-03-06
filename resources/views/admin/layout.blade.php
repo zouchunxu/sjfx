@@ -1,5 +1,4 @@
-﻿@yield('layout')
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
 BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
 Version: 1.0.0
@@ -16,7 +15,7 @@ Purchase: http://wrapbootstrap.com
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--Basic Styles-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -33,8 +32,7 @@ Purchase: http://wrapbootstrap.com
     <link href="assets/css/typicons.min.css" rel="stylesheet" />
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
-    @section('css')
-    @endsection
+    @yield('css')
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="assets/js/skins.min.js"></script>
 </head>
@@ -406,7 +404,7 @@ Purchase: http://wrapbootstrap.com
                 <!-- Sidebar Menu -->
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
-                    <li class="active">
+                    <li class="">
                         <a href="javascript:;">
                             <i class="menu-icon glyphicon glyphicon-home"></i>
                             <span class="menu-text"> 后台主页 </span>
@@ -422,327 +420,19 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="/admin">
+                                <a href="/useradd">
                                     <span class="menu-text">添加会员</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="elements.html">
+                                <a href="/userlist">
                                     <span class="menu-text">会员列表</span>
                                 </a>
                             </li>
 
                         </ul>
                     </li>
-                    <!--Tables-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-table"></i>
-                            <span class="menu-text"> Tables </span>
 
-                            <i class="menu-expand"></i>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="tables-simple.html">
-                                    <span class="menu-text">Simple & Responsive</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tables-data.html">
-                                    <span class="menu-text">Data Tables</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--Forms-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
-                            <span class="menu-text"> Forms </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="form-layouts.html">
-                                    <span class="menu-text">Form Layouts</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="form-inputs.html">
-                                    <span class="menu-text">Form Inputs</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="form-pickers.html">
-                                    <span class="menu-text">Data Pickers</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="form-wizard.html">
-                                    <span class="menu-text">Wizard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="form-validation.html">
-                                    <span class="menu-text">Validation</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="form-editors.html">
-                                    <span class="menu-text">Editors</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--Charts-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-bar-chart-o"></i>
-                            <span class="menu-text"> Charts </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="flot.html">
-                                    <span class="menu-text">Flot Charts</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="morris.html">
-                                    <span class="menu-text"> Morris Charts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="sparkline.html">
-                                    <span class="menu-text">Sparkline Charts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="easypiecharts.html">
-                                    <span class="menu-text">Easy Pie Charts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="chartjs.html">
-                                    <span class="menu-text"> ChartJS</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--Profile-->
-                    <li>
-                        <a href="profile.html">
-                            <i class="menu-icon fa fa-picture-o"></i>
-                            <span class="menu-text">Profile</span>
-                        </a>
-                    </li>
-                    <!--Mail-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-envelope-o"></i>
-                            <span class="menu-text"> Mail </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="inbox.html">
-                                    <span class="menu-text">Inbox</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="message-view.html">
-                                    <span class="menu-text">View Message</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="message-compose.html">
-                                    <span class="menu-text">Compose Message</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--Calendar-->
-                    <li>
-                        <a href="calendar.html">
-                            <i class="menu-icon fa fa-calendar"></i>
-                            <span class="menu-text">
-                                Calendar
-                            </span>
-                        </a>
-                    </li>
-                    <!--Pages-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon glyphicon glyphicon-paperclip"></i>
-                            <span class="menu-text"> Pages </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="timeline.html">
-                                    <span class="menu-text">Timeline</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">
-                                    <span class="menu-text">Pricing Tables</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="invoice.html">
-                                    <span class="menu-text">Invoice</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="login.html">
-                                    <span class="menu-text">Login</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="register.html">
-                                    <span class="menu-text">Register</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="lock.html">
-                                    <span class="menu-text">Lock Screen</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="typography.html">
-                                    <span class="menu-text"> Typography </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--More Pages-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon glyphicon glyphicon-link"></i>
-
-                            <span class="menu-text">
-                                More Pages
-                            </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="error-404.html">
-                                    <span class="menu-text">Error 404</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="error-500.html">
-                                    <span class="menu-text"> Error 500</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="blank.html">
-                                    <span class="menu-text">Blank Page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="grid.html">
-                                    <span class="menu-text"> Grid</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="menu-dropdown">
-                                    <span class="menu-text">
-                                        Multi Level Menu
-                                    </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-
-                                <ul class="submenu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="menu-icon fa fa-camera"></i>
-                                            <span class="menu-text">Level 3</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="menu-dropdown">
-                                            <i class="menu-icon fa fa-asterisk"></i>
-
-                                            <span class="menu-text">
-                                                Level 4
-                                            </span>
-                                            <i class="menu-expand"></i>
-                                        </a>
-
-                                        <ul class="submenu">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="menu-icon fa fa-bolt"></i>
-                                                    <span class="menu-text">Some Item</span>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="menu-icon fa fa-bug"></i>
-                                                    <span class="menu-text">Another Item</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <!--Right to Left-->
-                    <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-align-right"></i>
-                            <span class="menu-text"> Right to Left </span>
-
-                            <i class="menu-expand"></i>
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                <a>
-                                    <span class="menu-text">RTL</span>
-                                    <label class="pull-right margin-top-10">
-                                        <input id="rtl-changer" class="checkbox-slider slider-icon colored-primary" type="checkbox">
-                                        <span class="text"></span>
-                                    </label>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index-rtl-ar.html">
-                                    <span class="menu-text">Arabic Layout</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="index-rtl-fa.html">
-                                    <span class="menu-text">Persian Layout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
                 <!-- /Sidebar Menu -->
             </div>
@@ -781,8 +471,7 @@ Purchase: http://wrapbootstrap.com
                 <!-- /Page Header -->
                 <!-- Page Body  <div class="page-body"> -->
                 <div class="page-body">
-                    @section('main')
-                    @endsection
+                   @yield('main')
                 </div>
                 <!-- /Page Body -->
             </div>
@@ -817,7 +506,12 @@ Purchase: http://wrapbootstrap.com
     <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
     <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
 
-    <script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var AdminIndexUrl = '{{ $url }}';
         var title = '{{ $title or '' }}';
         var twotitle = '{{ $twotitle or '' }}';
@@ -831,273 +525,10 @@ Purchase: http://wrapbootstrap.com
         });
         $('#title').html(title);
         $("#twotitle").html(twotitle);
-        $("#twotitle_s").html(twotitle);
         $("#title").children(0).remove('.menu-expand');
-        // If you want to draw your charts with Theme colors you must run initiating charts after that current skin is loaded
-        $(window).bind("load", function () {
-
-            /*Sets Themed Colors Based on Themes*/
-            themeprimary = getThemeColorFromCss('themeprimary');
-            themesecondary = getThemeColorFromCss('themesecondary');
-            themethirdcolor = getThemeColorFromCss('themethirdcolor');
-            themefourthcolor = getThemeColorFromCss('themefourthcolor');
-            themefifthcolor = getThemeColorFromCss('themefifthcolor');
-
-            //Sets The Hidden Chart Width
-            $('#dashboard-bandwidth-chart')
-                .data('width', $('.box-tabbs')
-                    .width() - 20);
-
-            //-------------------------Visitor Sources Pie Chart----------------------------------------//
-            var data = [
-                {
-                    data: [[1, 21]],
-                    color: '#fb6e52'
-                },
-                {
-                    data: [[1, 12]],
-                    color: '#e75b8d'
-                },
-                {
-                    data: [[1, 11]],
-                    color: '#a0d468'
-                },
-                {
-                    data: [[1, 10]],
-                    color: '#ffce55'
-                },
-                {
-                    data: [[1, 46]],
-                    color: '#5db2ff'
-                }
-            ];
-            var placeholder = $("#dashboard-pie-chart-sources");
-            placeholder.unbind();
-
-            $.plot(placeholder, data, {
-                series: {
-                    pie: {
-                        innerRadius: 0.45,
-                        show: true,
-                        stroke: {
-                            width: 4
-                        }
-                    }
-                }
-            });
-
-            //------------------------------Visit Chart------------------------------------------------//
-            var data2 = [{
-                color: themesecondary,
-                label: "Direct Visits",
-                data: [[3, 2], [4, 5], [5, 4], [6, 11], [7, 12], [8, 11], [9, 8], [10, 14], [11, 12], [12, 16], [13, 9],
-                [14, 10], [15, 14], [16, 15], [17, 9]],
-
-                lines: {
-                    show: true,
-                    fill: true,
-                    lineWidth: .1,
-                    fillColor: {
-                        colors: [{
-                            opacity: 0
-                        }, {
-                            opacity: 0.4
-                        }]
-                    }
-                },
-                points: {
-                    show: false
-                },
-                shadowSize: 0
-            },
-                {
-                    color: themeprimary,
-                    label: "Referral Visits",
-                    data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
-                    [14, 14], [15, 12], [16, 14], [17, 15]],
-                    bars: {
-                        order: 1,
-                        show: true,
-                        borderWidth: 0,
-                        barWidth: 0.4,
-                        lineWidth: .5,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.4
-                            }, {
-                                opacity: 1
-                            }]
-                        }
-                    }
-                },
-                {
-                    color: themethirdcolor,
-                    label: "Search Engines",
-                    data: [[3, 14], [4, 11], [5, 10], [6, 9], [7, 5], [8, 8], [9, 5], [10, 6], [11, 4], [12, 7], [13, 4],
-                    [14, 3], [15, 4], [16, 6], [17, 4]],
-                    lines: {
-                        show: true,
-                        fill: false,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.3
-                            }, {
-                                opacity: 0
-                            }]
-                        }
-                    },
-                    points: {
-                        show: true
-                    }
-                }
-            ];
-            var options = {
-                legend: {
-                    show: false
-                },
-                xaxis: {
-                    tickDecimals: 0,
-                    color: '#f3f3f3'
-                },
-                yaxis: {
-                    min: 0,
-                    color: '#f3f3f3',
-                    tickFormatter: function (val, axis) {
-                        return "";
-                    },
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: false,
-                    borderWidth: 0,
-                    aboveData: false,
-                    color: '#fbfbfb'
-
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    defaultTheme: false,
-                    content: " <b>%x May</b> , <b>%s</b> : <span>%y</span>",
-                }
-            };
-            var placeholder = $("#dashboard-chart-visits");
-            var plot = $.plot(placeholder, data2, options);
-
-            //------------------------------Real-Time Chart-------------------------------------------//
-            var data = [],
-                totalPoints = 300;
-
-            function getRandomData() {
-
-                if (data.length > 0)
-                    data = data.slice(1);
-
-                // Do a random walk
-
-                while (data.length < totalPoints) {
-
-                    var prev = data.length > 0 ? data[data.length - 1] : 50,
-                        y = prev + Math.random() * 10 - 5;
-
-                    if (y < 0) {
-                        y = 0;
-                    } else if (y > 100) {
-                        y = 100;
-                    }
-
-                    data.push(y);
-                }
-
-                // Zip the generated y values with the x values
-
-                var res = [];
-                for (var i = 0; i < data.length; ++i) {
-                    res.push([i, data[i]]);
-                }
-
-                return res;
-            }
-            // Set up the control widget
-            var updateInterval = 100;
-            var plot = $.plot("#dashboard-chart-realtime", [getRandomData()], {
-                yaxis: {
-                    color: '#f3f3f3',
-                    min: 0,
-                    max: 100,
-                    tickFormatter: function (val, axis) {
-                        return "";
-                    }
-                },
-                xaxis: {
-                    color: '#f3f3f3',
-                    min: 0,
-                    max: 100,
-                    tickFormatter: function (val, axis) {
-                        return "";
-                    }
-                },
-                colors: [themeprimary],
-                series: {
-                    lines: {
-                        lineWidth: 0,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.5
-                            }, {
-                                opacity: 0
-                            }]
-                        },
-                        steps: false
-                    },
-                    shadowSize: 0
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: false,
-                    borderWidth: 0,
-                    aboveData: false
-                }
-            });
-
-            function update() {
-
-                plot.setData([getRandomData()]);
-
-                plot.draw();
-                setTimeout(update, updateInterval);
-            }
-            update();
-
-
-            //-------------------------Initiates Easy Pie Chart instances in page--------------------//
-            InitiateEasyPieChart.init();
-
-            //-------------------------Initiates Sparkline Chart instances in page------------------//
-            InitiateSparklineCharts.init();
-
-
-        });
-
     </script>
-    <!--Google Analytics::Demo Only-->
-{{--
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-52103994-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
---}}
-
-    @section('js')
-    @endsection
+    <script src="assets/js/layer/layer.js"></script>
+    @yield('js')
 </body>
 <!--  /Body -->
 </html>
