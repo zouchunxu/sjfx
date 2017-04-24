@@ -27,6 +27,12 @@ class CreateUsersTable extends Migration
             $table->string('head');
             $table->integer('integral');
             $table->string('topic');
+            $table->decimal('out_money');
+            $table->decimal('in_money');
+            $table->string('open_id');
+            $table->decimal('real_gold');
+            $table->decimal('virtual_gold');
+            $table->decimal('welfare');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

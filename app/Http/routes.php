@@ -11,21 +11,33 @@
 |
 */
 
-Route::any('/',function(){
+Route::any('/', function () {
     return redirect()->route('admin::useradd');
 });
 
 
-Route::get('/',function(){
-    return showMsg('测试一下好不好用','/useradd');
-});
+//Route::get('/',function(){
+//    return showMsg('测试一下好不好用','/useradd');
+//});
 
 
+Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
+    Route::any('/useradd', ['as' => 'useradd', 'uses' => 'Admin\UserController@add']);
+    Route::match(['post', 'get'], '/userlist', ['as' => 'userlist', 'uses' => 'Admin\UserController@index']);
+    Route::post('/userdel', 'Admin\UserController@del');
+    Route::match(['post', 'get'], '/useredit', ['uses' => 'Admin\UserController@upd']);
+    Route::controller('category', 'Admin\CategoryController', [
+        'anyAdd' => 'category.add',
+        'anyList' => 'category.index',
+        'anyUpd' => 'category.upd',
+        'anyDel' => 'category.del',
+    ]);
 
+    Route::controller('ware', 'Admin\WareController', [
+        'anyAdd' => 'ware.add',
+        'anyList' => 'ware.index',
+        'anyUpd' => 'ware.upd',
+        'anyDel' => 'ware.del'
+    ]);
 
-Route::group(['as'=>'admin::','middleware'=>'admin'],function(){
-    Route::any('/useradd',['as'=>'useradd','uses'=>'Admin\UserController@add']);
-    Route::match(['post','get'],'/userlist',['as'=>'userlist','uses'=>'Admin\UserController@index']);
-    Route::post('/userdel','Admin\UserController@del');
-    Route::match(['post','get'],'/useredit',['uses'=>'Admin\UserController@upd']);
 });

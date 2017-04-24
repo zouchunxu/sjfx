@@ -110,6 +110,46 @@
                                         <i class="fa fa-user-md circular"></i>
                                     </span>
                                 </div>
+                                <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control"
+                                               name="out_money" value="{{ empty($user->out_money)?'':$user->out_money }}"
+                                               placeholder="出金">
+                                        <i class="fa fa-angle-left circular"></i>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control"
+                                               name="in_money" value="{{ empty($user->in_money)?'':$user->in_money }}"
+                                               placeholder="入金">
+                                        <i class="fa fa-angle-right circular"></i>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control"
+                                               name="real_gold" value="{{ empty($user->real_gold)?'':$user->real_gold }}"
+                                               placeholder="真实金币">
+                                        <i class="fa fa-strikethrough circular"></i>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control"
+                                               name="virtual_gold" value="{{ empty($user->virtual_gold)?'':$user->virtual_gold }}"
+                                               placeholder="虚拟金币">
+                                        <i class="fa fa-strikethrough circular"></i>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control"
+                                               name="welfare" value="{{ empty($user->welfare)?'':$user->welfare }}"
+                                               placeholder="福利金币">
+                                        <i class="fa fa-strikethrough circular"></i>
+                                    </span>
+                                </div>
                                 <button {{ !empty($user->uid) ? 'type=submit' : 'type=button id=sub' }} class="btn btn-blue" >{{ !empty($user->uid) ? '修改' : '注册' }}</button>
                                 <button type="reset" id="reset" class="btn btn-blue">重置</button>
 

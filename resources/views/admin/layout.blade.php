@@ -9,32 +9,33 @@ Purchase: http://wrapbootstrap.com
 <!-- Head -->
 <head>
     <meta charset="utf-8" />
-    <title>渝汇页游平台</title>
+    <title>三级分销后台管理</title>
 
     <meta name="description" content="Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--Basic Styles-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/css/weather-icons.min.css" rel="stylesheet" />
 
     <!--Fonts-->
-    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+    {{--<link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">--}}
 
     <!--Beyond styles-->
-    <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/demo.min.css" rel="stylesheet" />
-    <link href="assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link id="beyond-link" href="/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://sjfx.com/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="/assets/css/typicons.min.css" rel="stylesheet" />
+    <link href="/assets/css/animate.min.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
     @yield('css')
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="assets/js/skins.min.js"></script>
+    <script src="/assets/js/skins.min.js"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
@@ -70,7 +71,7 @@ Purchase: http://wrapbootstrap.com
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <img src="assets/img/logo.png" alt="" />
+                            <img src="/assets/img/logo.png" alt="" />
                         </small>
                     </a>
                 </div>
@@ -195,7 +196,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/img/avatars/bing.png" class="message-avatar" alt="Microsoft Bing">
+                                            <img src="/assets/img/avatars/bing.png" class="message-avatar" alt="Microsoft Bing">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     Bing.com
@@ -214,7 +215,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/img/avatars/adam-jansen.jpg" class="message-avatar" alt="Divyia Austin">
+                                            <img src="/assets/img/avatars/adam-jansen.jpg" class="message-avatar" alt="Divyia Austin">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     Nicolas
@@ -306,7 +307,7 @@ Purchase: http://wrapbootstrap.com
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                     <div class="avatar" title="View your public profile">
-                                        <img src="assets/img/avatars/adam-jansen.jpg">
+                                        <img src="/assets/img/avatars/adam-jansen.jpg">
                                     </div>
                                     <section>
                                         <h2><span class="profile"><span>David Stevenson</span></span></h2>
@@ -319,7 +320,7 @@ Purchase: http://wrapbootstrap.com
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
-                                            <img src="assets/img/avatars/adam-jansen.jpg" class="avatar">
+                                            <img src="/assets/img/avatars/adam-jansen.jpg" class="avatar">
                                             <span class="caption">Change Photo</span>
                                         </div>
                                     </li>
@@ -331,18 +332,18 @@ Purchase: http://wrapbootstrap.com
                                     <!--Theme Selector Area-->
                                     <li class="theme-area">
                                         <ul class="colorpicker" id="skin-changer">
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="assets/css/skins/blue.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="assets/css/skins/azure.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="assets/css/skins/teal.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="assets/css/skins/green.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="assets/css/skins/orange.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="assets/css/skins/pink.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="assets/css/skins/darkred.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="assets/css/skins/purple.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="assets/css/skins/darkblue.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="assets/css/skins/gray.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="assets/css/skins/black.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="assets/css/skins/deepblue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="/assets/css/skins/blue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="/assets/css/skins/azure.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="/assets/css/skins/teal.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="/assets/css/skins/green.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="/assets/css/skins/orange.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="/assets/css/skins/pink.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="/assets/css/skins/darkred.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="/assets/css/skins/purple.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="/assets/css/skins/darkblue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="/assets/css/skins/gray.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="/assets/css/skins/black.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="/assets/css/skins/deepblue.min.css"></a></li>
                                         </ul>
                                     </li>
                                     <!--/Theme Selector Area-->
@@ -432,6 +433,48 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:;" class="menu-dropdown">
+                            <i class="menu-icon fa  fa-list"></i>
+                            <span class="menu-text"> 分类管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{{ route("admin::category.add") }}">
+                                    <span class="menu-text">添加分类</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin::category.index") }}">
+                                    <span class="menu-text">分类列表</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="menu-dropdown">
+                            <i class="menu-icon fa   fa-dot-circle-o"></i>
+                            <span class="menu-text"> 商品管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{{ route("admin::ware.add") }}">
+                                    <span class="menu-text">添加商品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin::ware.index") }}">
+                                    <span class="menu-text">商品列表</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
 
                 </ul>
                 <!-- /Sidebar Menu -->
@@ -483,28 +526,28 @@ Purchase: http://wrapbootstrap.com
     </div>
 
     <!--Basic Scripts-->
-    <script src="assets/js/jquery-2.0.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 
     <!--Beyond Scripts-->
-    <script src="assets/js/beyond.min.js"></script>
+    <script src="/assets/js/beyond.min.js"></script>
 
 
     <!--Page Related Scripts-->
     <!--Sparkline Charts Needed Scripts-->
-    <script src="assets/js/charts/sparkline/jquery.sparkline.js"></script>
-    <script src="assets/js/charts/sparkline/sparkline-init.js"></script>
+    <script src="/assets/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="/assets/js/charts/sparkline/sparkline-init.js"></script>
 
     <!--Easy Pie Charts Needed Scripts-->
-    <script src="assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
-    <script src="assets/js/charts/easypiechart/easypiechart-init.js"></script>
+    <script src="/assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="/assets/js/charts/easypiechart/easypiechart-init.js"></script>
 
     <!--Flot Charts Needed Scripts-->
-    <script src="assets/js/charts/flot/jquery.flot.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.resize.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.pie.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
-    <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.resize.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.pie.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.tooltip.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.orderBars.js"></script>
 
     <script type="text/javascript">
         $.ajaxSetup({
@@ -527,7 +570,7 @@ Purchase: http://wrapbootstrap.com
         $("#twotitle").html(twotitle);
         $("#title").children(0).remove('.menu-expand');
     </script>
-    <script src="assets/js/layer/layer.js"></script>
+    <script src="/assets/js/layer/layer.js"></script>
     @yield('js')
 </body>
 <!--  /Body -->
