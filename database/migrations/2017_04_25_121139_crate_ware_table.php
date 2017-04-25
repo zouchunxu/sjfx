@@ -15,13 +15,13 @@ class CrateWareTable extends Migration
         Schema::create('wares', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id');
+            $table->string('summary');
             $table->string('title');
             $table->string('logo');
             $table->softDeletes();
             $table->timestamps();
             $table->text('desc');
             $table->text('trait');
-            $table->unique('category_id');
         });
     }
 

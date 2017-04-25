@@ -29,9 +29,18 @@
                             </div>
                             <div class="form-group">
                                     <span class="input-icon icon-right">
-                                        <input name="name" value="{{ empty($ware->title)? '' :$ware->title }}" type="text"
+                                        <input name="title" value="{{ empty($ware->title)? '' :$ware->title }}"
+                                               type="text"
                                                class="form-control"
                                                id="userameInput" placeholder="商品名称">
+                                        <i class="fa  fa-barcode circular"></i>
+                                    </span>
+                            </div>
+                            <div class="form-group">
+                                    <span class="input-icon icon-right">
+                                        <input name="summary" value="{{ empty($ware->summary)? '' :$ware->summary }}"
+                                               type="text"
+                                               class="form-control" placeholder="商品简介">
                                         <i class="fa  fa-barcode circular"></i>
                                     </span>
                             </div>
@@ -44,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                     <span class="input-icon icon-right">
-                                         <select id="e2" style="width: 100%;" name="type">
+                                         <select id="e2" style="width: 100%;" name="category_id">
                                              @foreach($categorys as $category)
                                                  <option value="{{ $category->id }}" {{ !empty($ware->category_id) && $ware->category_id == $category->id   ? 'selected' :'' }} />{{ $category->name }}
                                              @endforeach
@@ -55,6 +64,7 @@
                                         <i class="fa fa-align-justify circular"></i>
                                     </span>
                             </div>
+                            <div id="malloc"></div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -99,19 +109,19 @@
         $('#summernote').summernote({
             height: 300,
             callbacks: {
-                onImageUpload: function(files) {
+                onImageUpload: function (files) {
                     var formData = new FormData();
                     console.log(formData);
-                    formData.append('file',files[0]);
+                    formData.append('file', files[0]);
                     $.ajax({
-                        url : '{{ route("admin::upload") }}',//TODO 后台文件上传接口
-                        type : 'POST',
-                        data : formData,
-                        processData : false,
-                        contentType : false,
-                        success : function(data) {
+                        url: '{{ route("admin::upload") }}',//TODO 后台文件上传接口
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
                             console.log(data);
-                            $('#summernote').summernote('insertImage',data,'img');
+                            $('#summernote').summernote('insertImage', data, 'img');
                         }
                     });
                 }
@@ -124,8 +134,8 @@
 
         $("#sub").click(function () {
             var param = $.par2Json($("#register_data").serialize());
-            console.log( $('#summernote').code());
-            param['context'] = $('#summernote').code();
+            console.log($('#summernote').code());
+            param['desc'] = $('#summernote').code();
             $.ajaxFileUpload
             (
                 {
@@ -154,11 +164,34 @@
                 }
             )
         });
+        getMallocContent($("#e2").val());
 
-
-        $("#e2").change(function(){
-
+        $("#e2").change(function () {
+            var id = $(this).val();
+            getMallocContent(id);
 
         });
+
+        function getMallocContent(id){
+            $.get('/category/detail', {'id': id}, function (data) {
+                var type = data.type;
+                $.get('/config/category-types-field', {'type': type}, function (data) {
+                    if (data) {
+                        var html = '';
+                        for (var i in data) {
+                            console.log(i);
+                            html += '<div class="form-group">';
+                            html += '<span class="input-icon icon-right">';
+                            html += '<input name="trait['+i+']" type="text"class="form-control" placeholder="'+data[i].name+'">';
+                            html += '<i class="fa fa-wrench circular"></i>';
+                            html += '</span>';
+                            html += '</div>';
+                        }
+                        $("#malloc").html(html);
+                    }
+                });
+            });
+        }
+
     </script>
 @endsection

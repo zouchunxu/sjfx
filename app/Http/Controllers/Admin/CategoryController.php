@@ -29,9 +29,9 @@ class CategoryController extends Controller
             Category::create($request->except('_token'));
             return response()->json($return);
         }
-        return view('admin/category-add',[
+        return view('admin/category-add', [
             'url' => $request->url(),
-            'categoryTypes' => (array)config('categorytypes')
+            'categoryTypes' => (array)config('categorytypes.names')
         ]);
     }
 
@@ -39,21 +39,21 @@ class CategoryController extends Controller
     {
         if ($request->isMethod('post')) {
             $this->validate($request, [
-                'name' => 'required|unique:categorys,name,'.$request->id.',id|max:32',
+                'name' => 'required|unique:categorys,name,' . $request->id . ',id|max:32',
                 'type' => 'required',
             ]);
 
             if (Category::where('id', $request->id)->update(array_unique($request->except(['id', '_token'])))) {
                 $msg = '修改分类信息成功！';
-            }else{
+            } else {
                 $msg = '修改分类信息失败！';
             }
-            return showMsg($msg,route('admin::category.index'));
+            return showMsg($msg, route('admin::category.index'));
         } else {
             return view('admin/category-add', [
                 'url' => route('admin::category.index'),
                 'category' => Category::find($request->input('id')),
-                'categoryTypes' => (array)config('categorytypes')
+                'categoryTypes' => (array)config('categorytypes.names')
             ]);
 
         }
@@ -68,6 +68,11 @@ class CategoryController extends Controller
             $return['msg'] = '删除分类失败!';
         }
         return response()->json($return);
+    }
+
+    public function getDetail(Request $request)
+    {
+        return response()->json(Category::where('id',$request->input('id'))->first());
     }
 
 }

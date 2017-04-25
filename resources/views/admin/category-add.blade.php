@@ -38,7 +38,7 @@
                                     <span class="input-icon icon-right">
                                          <select id="e2" style="width: 100%;" name="type">
                                              @foreach($categoryTypes as $key => $categoryType)
-                                                 <option value="0" {{ !empty($category->type) && $category->type == $key  ? 'selected' :'' }} />{{ $categoryType }}
+                                                 <option value="{{ $key }}" {{ !empty($category->type) && $category->type == $key  ? 'selected' :'' }} />{{ $categoryType }}
                                              @endforeach
                                                 {{--<option value="1" {{ !empty($category->type) && $category->type == 1  ? 'selected' :'' }} />果园--}}
                                                 {{--<option value="2" {{ !empty($category->type) && $category->type == 2  ? 'selected' :'' }}/>牧场--}}

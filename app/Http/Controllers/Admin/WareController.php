@@ -10,14 +10,13 @@ class WareController extends Controller
 {
     public function anyAdd(Request $request)
     {
-
         if ($request->isMethod('post')) {
+            $return = ['error' => 0, 'msg' => '添加商品成功！'];
             if ($request->hasFile('logo')) {
-                $return = ['error' => 0, 'msg' => '添加分类成功！'];
                 $name = $request->file('logo')->getClientOriginalName();
                 $extension = pathinfo($name, PATHINFO_EXTENSION);
                 $fileName = md5(microtime()) . ".{$extension}";
-                $dirName = './upload/' . date('Ymd');
+                $dirName = 'upload/' . date('Ymd');
                 if (!is_dir($dirName)) {
                     mkdir($dirName, 777);
                 }
@@ -26,12 +25,10 @@ class WareController extends Controller
             } else {
                 $imgFile = '';
             }
-
-            var_dump($request->input());
-            die;
-
-            $data = array_merge($request->except('_token'), [
-                'logo' => $imgFile
+            $traits = $request->input('trait');
+            $data = array_merge($request->except('_token', 'trait'), [
+                'logo' => $imgFile,
+                'trait' => json_encode($traits)
             ]);
             Ware::create($data);
 //            compressedImage($imgFile,0.6);
@@ -44,14 +41,24 @@ class WareController extends Controller
         ]);
     }
 
-    public function anyDel()
+    public function anyDel(Request $request)
     {
-
+        $return = ['error' => 0, 'msg' => '删除商品成功!'];
+        if (!Ware::where('id', $request->input('id'))->delete()) {
+            $return['error'] = 1;
+            $return['msg'] = '删除分类失败!';
+        }
+        return response()->json($return);
     }
 
-    public function anyList()
+    public function anyList(Request $request)
     {
-
+        if ($request->isMethod('get')) {
+            return view('admin/ware-list')->withUrl($request->url());
+        } else {
+            $data = Ware::paginate(15);
+            return response()->json(['data' => $data->toJson(), 'page' => $data->render()]);
+        }
     }
 
     public function anyUpd()
