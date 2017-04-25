@@ -30,7 +30,8 @@ class CategoryController extends Controller
             return response()->json($return);
         }
         return view('admin/category-add',[
-            'url' => $request->url()
+            'url' => $request->url(),
+            'categoryTypes' => (array)config('categorytypes')
         ]);
     }
 
@@ -49,7 +50,11 @@ class CategoryController extends Controller
             }
             return showMsg($msg,route('admin::category.index'));
         } else {
-            return view('admin/category-add', ['url' => route('admin::category.index'), 'category' => Category::find($request->input('id'))]);
+            return view('admin/category-add', [
+                'url' => route('admin::category.index'),
+                'category' => Category::find($request->input('id')),
+                'categoryTypes' => (array)config('categorytypes')
+            ]);
 
         }
     }

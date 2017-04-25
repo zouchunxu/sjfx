@@ -29,17 +29,17 @@
                             </div>
                             <div class="form-group">
                                     <span class="input-icon icon-right">
-                                        <input name="name" value="{{ empty($ware->name)? '' :$ware->name }}" type="text"
+                                        <input name="name" value="{{ empty($ware->title)? '' :$ware->title }}" type="text"
                                                class="form-control"
                                                id="userameInput" placeholder="商品名称">
-                                        <i class="glyphicon glyphicon-user circular"></i>
+                                        <i class="fa  fa-barcode circular"></i>
                                     </span>
                             </div>
                             <div class="form-group">
                                     <span class="input-icon icon-right">
                                         <input name="logo" type="file" class="form-control"
                                                id="logo" placeholder="商品图片">
-                                        <i class="glyphicon glyphicon-user circular"></i>
+                                        <i class="fa fa-picture-o circular"></i>
                                     </span>
                             </div>
                             <div class="form-group">
@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="widget-body">
                                                 <div class="widget-main no-padding">
-                                                    <div id="summernote"></div>
+                                                    <div id="summernote" name="summernote"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,9 +101,10 @@
             callbacks: {
                 onImageUpload: function(files) {
                     var formData = new FormData();
+                    console.log(formData);
                     formData.append('file',files[0]);
                     $.ajax({
-                        url : 'upload',//TODO 后台文件上传接口
+                        url : '{{ route("admin::upload") }}',//TODO 后台文件上传接口
                         type : 'POST',
                         data : formData,
                         processData : false,
@@ -122,14 +123,16 @@
         });
 
         $("#sub").click(function () {
-            var param = $("#register_data").serialize();
+            var param = $.par2Json($("#register_data").serialize());
+            console.log( $('#summernote').code());
+            param['context'] = $('#summernote').code();
             $.ajaxFileUpload
             (
                 {
                     url: "{{ route("admin::ware.add") }}",
                     secureuri: false, //是否需要安全协议，一般设置为false
                     fileElementId: 'logo', //文件上传域的ID
-                    data: $.par2Json(param),
+                    data: param,
                     dataType: 'json', //返回值类型 一般设置为json
                     success: function (data, status)  //服务器成功响应处理函数
                     {
@@ -150,27 +153,11 @@
                     }
                 }
             )
-            {{--$.ajax({--}}
-            {{--url: "{{ route("admin::ware.add") }}",--}}
-            {{--data:param,--}}
-            {{--type:'POST',--}}
-            {{--dataType:'json',--}}
-            {{--success: function(data){--}}
-            {{--if(data.error == 0){--}}
-            {{--layer.msg(data.msg);--}}
-            {{--$("#reset").click();--}}
-            {{--}else{--}}
-            {{--layer.msg('添加商品失败！');--}}
-            {{--}--}}
-            {{--},--}}
-            {{--error:function(error){--}}
-            {{--var json = eval('('+error.responseText+')');--}}
-            {{--for(var i in json) {--}}
-            {{--layer.msg(json[i][0]);--}}
-            {{--return;--}}
-            {{--}--}}
-            {{--}--}}
-            {{--});--}}
+        });
+
+
+        $("#e2").change(function(){
+
 
         });
     </script>

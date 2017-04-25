@@ -55,8 +55,8 @@
 
 @section('js')
     <script type="text/javascript">
-        page(1);
 
+        var types = [];
         function page(page) {
             $.post('{{ route('admin::category.index') }}', {'page': page}, function (data) {
 
@@ -83,24 +83,13 @@
             $("#category-data").html(html);
 
         }
-
+        $.get('/config/category-types',function(data){
+            types = data;
+            page(1);
+        });
         function getType(type){
-            switch (type){
-                case 0:
-                    return '农场';
-                case 1:
-                    return '果园';
-                case 2:
-                    return '牧场';
-                case 3:
-                    return '鱼塘';
-                case 4:
-                    return '管家';
-                case 5:
-                    return '粮食';
-                default:
-                    return '未知';
-            }
+            console.log(types[type]);
+            return String(types[type]);
         }
 
         function del(id,obj) {

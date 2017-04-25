@@ -37,12 +37,14 @@
                                 <div class="form-group">
                                     <span class="input-icon icon-right">
                                          <select id="e2" style="width: 100%;" name="type">
-                                                <option value="0" {{ !empty($category->name) && $category->type == 0  ? 'selected' :'' }} />农场
-                                                <option value="1" {{ !empty($category->name) && $category->type == 1  ? 'selected' :'' }} />果园
-                                                <option value="2" {{ !empty($category->name) && $category->type == 2  ? 'selected' :'' }}/>牧场
-                                                <option value="3" {{ !empty($category->name) && $category->type == 3  ? 'selected' :'' }}/>鱼塘
-                                                <option value="4" {{ !empty($category->name) && $category->type == 4  ? 'selected' :'' }}/>管家
-                                                <option value="5" {{ !empty($category->name) && $category->type == 5  ? 'selected' :'' }}/>粮食
+                                             @foreach($categoryTypes as $key => $categoryType)
+                                                 <option value="0" {{ !empty($category->type) && $category->type == $key  ? 'selected' :'' }} />{{ $categoryType }}
+                                             @endforeach
+                                                {{--<option value="1" {{ !empty($category->type) && $category->type == 1  ? 'selected' :'' }} />果园--}}
+                                                {{--<option value="2" {{ !empty($category->type) && $category->type == 2  ? 'selected' :'' }}/>牧场--}}
+                                                {{--<option value="3" {{ !empty($category->type) && $category->type == 3  ? 'selected' :'' }}/>鱼塘--}}
+                                                {{--<option value="4" {{ !empty($category->type) && $category->type == 4  ? 'selected' :'' }}/>管家--}}
+                                                {{--<option value="5" {{ !empty($category->type) && $category->type == 5  ? 'selected' :'' }}/>粮食--}}
                                             </select>
                                         {{--<input name="name" value="{{ empty($category->type)? '' :$category->name }}" type="text" class="form-control"--}}
                                                {{--id="userameInput" placeholder="分类类型">--}}

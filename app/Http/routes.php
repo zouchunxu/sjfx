@@ -15,6 +15,8 @@ Route::any('/', function () {
     return redirect()->route('admin::useradd');
 });
 
+Route::controller('config','ConfigController');
+
 
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
@@ -39,5 +41,8 @@ Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
         'anyUpd' => 'ware.upd',
         'anyDel' => 'ware.del'
     ]);
+
+    Route::post('/upload',['as'=>'upload','uses'=>'Admin\CommonController@upload']);
+
 
 });
