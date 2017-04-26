@@ -12,19 +12,20 @@
 */
 
 Route::any('/', function () {
-    return ['a'=>'a'];
+    return ['a' => 'a'];
 });
 
-Route::controller('config','ConfigController');
+Route::controller('config', 'ConfigController');
 
 Route::any('/wechat', 'WechatController@serve');
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
 //});
 
-Route::group(['as'=>'wechat::','middleware'=>'wechat.oauth:snsapi_userinfo'],function(){
-    Route::controller('/test','Wechat\IndexController');
-    Route::controller('qrcode','Wechat\QrcodeController');
+
+Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
+    Route::controller('/test', 'Wechat\IndexController');
+    Route::controller('qrcode', 'Wechat\QrcodeController');
 });
 
 Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
@@ -46,7 +47,7 @@ Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
         'anyDel' => 'ware.del'
     ]);
 
-    Route::post('/upload',['as'=>'upload','uses'=>'Admin\CommonController@upload']);
+    Route::post('/upload', ['as' => 'upload', 'uses' => 'Admin\CommonController@upload']);
 
 
 });

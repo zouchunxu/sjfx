@@ -9,7 +9,7 @@ class QrcodeController extends Controller
     public function getMake(Application $wechat)
     {
         $qrcode = $wechat->qrcode;
-        $result = $qrcode->forever('');// 或者 $qrcode->forever("foo");
+        $result = $qrcode->forever('test');// 或者 $qrcode->forever("foo");
         $ticket = $result->ticket; // 或者 $result['ticket']
         $url = $result->url;
         return $url;
