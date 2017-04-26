@@ -22,6 +22,9 @@ Route::any('/wechat', 'WechatController@serve');
 //    return showMsg('测试一下好不好用','/useradd');
 //});
 
+Route::group(['as'=>'wechat::','middleware'=>'wechat.oauth:snsapi_userinfo'],function(){
+    Route::controller('/test','Wechat\IndexController');
+});
 
 Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
     Route::any('/useradd', ['as' => 'useradd', 'uses' => 'Admin\UserController@add']);
