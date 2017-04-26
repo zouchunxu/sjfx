@@ -61,9 +61,13 @@ class WareController extends Controller
         }
     }
 
-    public function anyUpd()
+    public function anyUpd(Request $request)
     {
-
+        return view('admin/ware-add', [
+            'url' => $request->url(),
+            'categorys' => Category::all(),
+            'ware' => Ware::find($request->input('id')),
+        ]);
     }
 
 

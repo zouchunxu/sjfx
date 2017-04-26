@@ -87,7 +87,7 @@
                 html += '<td style="vertical-align:middle;">' + getType(data[i].category_id) + '</td>';
                 html += '<td><img width="60px" src="/' + data[i].logo + '" class="img-thumbnail"></td>';
                 html += '<td style="vertical-align:middle;">' + data[i].summary.substr(0,20) + '</td>';
-                html += '<td style="vertical-align:middle;"><a href="/{{ route("admin::ware.upd") }}?id=' + data[i].id + '">编辑</a> / <a href="javascript:;" onclick="del(' + data[i].id + ',this)">删除</a></td>';
+                html += '<td style="vertical-align:middle;"><a href="{{ route("admin::ware.upd") }}?id=' + data[i].id + '">编辑</a> / <a href="javascript:;" onclick="del(' + data[i].id + ',this)">删除</a></td>';
                 html += '</tr>';
             }
             //   alert(html);

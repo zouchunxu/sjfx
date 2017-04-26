@@ -258,6 +258,17 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:;" class="menu-dropdown">
+                            <i class="menu-icon fa  fa-dollar"></i>
+                            <span class="menu-text"> 提现管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
 
                 </ul>
                 <!-- /Sidebar Menu -->
