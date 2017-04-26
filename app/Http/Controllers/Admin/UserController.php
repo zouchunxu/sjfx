@@ -12,7 +12,6 @@ class UserController extends Controller
 {
     public function add(Request $request)
     {
-
         if ($request->isMethod('get')) {
 
             return view('admin/useradd',['url'=>$request->url()]);
