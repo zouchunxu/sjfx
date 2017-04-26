@@ -7,6 +7,6 @@ class IndexController extends Controller
 {
     public function getTest()
     {
-
+        dd(session('wechat.oauth_user'));
     }
 }
