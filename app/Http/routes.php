@@ -12,7 +12,7 @@
 */
 
 Route::any('/', function () {
-    return redirect()->route('admin::useradd');
+    return ['a'=>'a'];
 });
 
 Route::controller('config','ConfigController');
@@ -24,6 +24,7 @@ Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['as'=>'wechat::','middleware'=>'wechat.oauth:snsapi_userinfo'],function(){
     Route::controller('/test','Wechat\IndexController');
+    Route::controller('qrcode','Wechat\QrcodeController');
 });
 
 Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
