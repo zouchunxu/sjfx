@@ -12,6 +12,6 @@ class QrcodeController extends Controller
         $result = $qrcode->forever('test');// 或者 $qrcode->forever("foo");
         $ticket = $result->ticket; // 或者 $result['ticket']
         $url = $result->url;
-        return $url;
+        return $ticket;
     }
 }
