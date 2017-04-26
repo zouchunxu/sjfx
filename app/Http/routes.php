@@ -17,7 +17,7 @@ Route::any('/', function () {
 
 Route::controller('config','ConfigController');
 
-
+Route::any('/wechat', 'WechatController@serve');
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
 //});
