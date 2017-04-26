@@ -18,10 +18,10 @@ Route::any('/', function () {
 Route::controller('config', 'ConfigController');
 
 Route::any('/wechat', 'WechatController@serve');
+Route::any('/qrcode-img', 'WechatController@qrcodeImg');
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
 //});
-
 
 Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
     Route::controller('/test', 'Wechat\IndexController');
