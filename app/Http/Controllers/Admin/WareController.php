@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Models\Ware;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class WareController extends Controller
 {
@@ -63,6 +63,37 @@ class WareController extends Controller
 
     public function anyUpd(Request $request)
     {
+        if ($request->isMethod('post')) {
+
+            if ($request->hasFile('logo')) {
+                $name = $request->file('logo')->getClientOriginalName();
+                $extension = pathinfo($name, PATHINFO_EXTENSION);
+                $fileName = md5(microtime()) . ".{$extension}";
+                $dirName = 'upload/' . date('Ymd');
+                if (!is_dir($dirName)) {
+                    mkdir($dirName, 777);
+                }
+                $request->file('logo')->move($dirName, $fileName);
+                $imgFile = $dirName . '/' . $fileName;
+            } else {
+                $imgFile = '';
+            }
+            $traits = $request->input('trait');
+            $data = array_merge($request->except('_token', 'trait'), [
+                'trait' => json_encode($traits)
+            ]);
+            if(!empty($imgFile)){
+                $data['logo'] = $imgFile;
+            }
+
+
+            if (Ware::where('id', $request->id)->update($data)) {
+                $msg = '修改商品信息成功！';
+            } else {
+                $msg = '修改商品信息失败！';
+            }
+            return showMsg($msg, route('admin::ware.index'));
+        }
         return view('admin/ware-add', [
             'url' => $request->url(),
             'categorys' => Category::all(),

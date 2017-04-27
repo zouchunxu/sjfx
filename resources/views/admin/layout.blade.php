@@ -90,28 +90,16 @@ Purchase: http://wrapbootstrap.com
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                     <div class="avatar" title="View your public profile">
-                                        <img src="/assets/img/avatars/adam-jansen.jpg">
+                                        {{--<img src="/assets/img/avatars/adam-jansen.jpg">--}}
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>David Stevenson</span></span></h2>
+                                        <h2><span class="profile"><span>{{ session('admin.username') }}</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                    <li class="username"><a>admin</a></li>
-                                    <li class="email"><a>admin@qq.com</a></li>
                                     <!--Avatar Area-->
-                                    <li>
-                                        <div class="avatar-area">
-                                            <img src="/assets/img/avatars/adam-jansen.jpg" class="avatar">
-                                            <span class="caption">Change Photo</span>
-                                        </div>
-                                    </li>
                                     <!--Avatar Area-->
-                                    <li class="edit">
-                                        <a href="profile.html" class="pull-left">Profile</a>
-                                        <a href="#" class="pull-right">Setting</a>
-                                    </li>
                                     <!--Theme Selector Area-->
                                     <li class="theme-area">
                                         <ul class="colorpicker" id="skin-changer">
@@ -131,7 +119,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
+                                        <a href="/admin-loginout">
                                             Sign out
                                         </a>
                                     </li>

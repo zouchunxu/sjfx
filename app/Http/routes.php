@@ -22,6 +22,9 @@ Route::any('/qrcode-img', 'WechatController@qrcodeImg');
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
 //});
+Route::any('/admin-login','Admin\IndexController@login');
+Route::any('/admin-loginout','Admin\IndexController@loginOut');
+
 
 Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
     Route::controller('/test', 'Wechat\IndexController');
