@@ -40,7 +40,7 @@ class IndexController extends Controller
             $username = $request->input('username');
             $password = $request->input('password');
             $users = config('admin');
-            $user = $users[$username];
+            $user = array_get($users,$username);
             if ($user && $user['password'] == $password) {
                 session(['admin' => $user]);
                 return showMsg('登录成功！', '/useradd');
