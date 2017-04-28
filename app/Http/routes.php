@@ -12,7 +12,7 @@
 */
 
 Route::any('/', function () {
-    return ['a' => 'a'];
+    return redirect('/useradd');
 });
 
 Route::controller('config', 'ConfigController');
