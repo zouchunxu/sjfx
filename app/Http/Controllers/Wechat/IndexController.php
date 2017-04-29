@@ -9,4 +9,10 @@ class IndexController extends Controller
     {
         dd(session('wechat.oauth_user'));
     }
+
+    public function getIndex()
+    {
+        return view('wechat.index');
+    }
+
 }

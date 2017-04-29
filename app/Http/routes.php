@@ -25,10 +25,11 @@ Route::any('/qrcode-img', 'WechatController@qrcodeImg');
 Route::any('/admin-login','Admin\IndexController@login');
 Route::any('/admin-loginout','Admin\IndexController@loginOut');
 
-
+Route::controller('index', 'Wechat\IndexController');
 Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
-    Route::controller('/test', 'Wechat\IndexController');
+
     Route::controller('qrcode', 'Wechat\QrcodeController');
+    Route::controller('user','Wechat\UserController');
 });
 
 Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
