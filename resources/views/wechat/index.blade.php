@@ -80,10 +80,82 @@
             <div class="clearfix"></div>
         </div>
     </div>
-    <div class="ad">
+    <div class="ad"></div>
+    <div class="list">
+        <div class="list-item">
+            <div class="logo">
+                <img src="/assets/img/unslider/shop.jpg" alt="">
+            </div>
+            <div class="title">
+                <div class="name">
+                    测试一下
+                </div>
+                <div class="other">
+                    <div class="price">
+                         ¥88.00
+                    </div>
+                    <div class="detail">
+                        详情 >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="logo">
+                <img src="/assets/img/unslider/shop.jpg" alt="">
+            </div>
+            <div class="title">
+                <div class="name">
+                    测试一下
+                </div>
+                <div class="other">
+                    <div class="price">
+                         ¥88.00
+                    </div>
+                    <div class="detail">
+                        详情 >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="logo">
+                <img src="/assets/img/unslider/shop.jpg" alt="">
+            </div>
+            <div class="title">
+                <div class="name">
+                    测试一下
+                </div>
+                <div class="other">
+                    <div class="price">
+                         ¥88.00
+                    </div>
+                    <div class="detail">
+                        详情 >
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="list-item">
+            <div class="logo">
+                <img src="/assets/img/unslider/shop.jpg" alt="">
+            </div>
+            <div class="title">
+                <div class="name">
+                    测试一下
+                </div>
+                <div class="other">
+                    <div class="price">
+                         ¥88.00
+                    </div>
+                    <div class="detail">
+                        详情 >
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="list"></div>
 </div>
 </body>
 <script src="/assets/js/jquery-2.0.3.min.js"></script>
