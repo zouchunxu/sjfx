@@ -1,10 +1,46 @@
-body{
+body {
     padding: 0;
-    margin:0;
+    margin: 0;
     font-family: Arial, '微软雅黑', '宋体', sans-serif;
     font-size: 1em;
+    height: 100%;
 }
+
 .container {
     width: 100%;
+    overflow: auto;
+}
 
+.bottom-nav {
+    position: fixed;
+    border: 1px solid green;
+    height: 80px;
+    width: 100%;
+    bottom: 0;
+    background: #00de00;
+    opacity: 0.9;
+}
+
+.bottom-nav .nav-item {
+    width: 20%;
+    margin: 0 2.5%;
+    height: inherit;
+    float: left;
+    cursor: hand;
+}
+
+.bottom-nav .nav-item .icon {
+    height: 60%;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 4px;
+}
+.bottom-nav .nav-item .title {
+    height: 40%;
+    text-align: center;
+
+}
+
+.bottom-nav .active {
+    color: #fff;
 }
