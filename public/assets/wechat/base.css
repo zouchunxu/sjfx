@@ -14,7 +14,7 @@ body {
 .bottom-nav {
     position: fixed;
     border: 1px solid #ccc;
-    height: 70px;
+    height: 60px;
     width: 100%;
     bottom: 0;
     background: #fff;
@@ -30,13 +30,13 @@ body {
 }
 
 .bottom-nav .nav-item .icon {
-    height: 65%;
+    height: 60%;
     text-align: center;
-    font-size: 3em;
+    font-size: 2em;
     padding-top: 2px;
 }
 .bottom-nav .nav-item .title {
-    height: 35%;
+    height: 40%;
     text-align: center;
 
 }
