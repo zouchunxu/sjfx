@@ -157,7 +157,7 @@
         </div>
     </div>
 </div>
-<div style="height: 80px;"></div>
+<div style="height: 60px;"></div>
 <div class="bottom-nav">
     <div class="nav-item">
         <div class="icon">
