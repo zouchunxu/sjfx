@@ -1,19 +1,20 @@
 .tip {
-    border: 1px solid blue;
     width: 100%;
     color: #008500;
     padding: 0 12px;
+    margin-bottom: 4px;
 }
 
 /* ========导航部分开始========= */
-.container-fluid{
-    padding:0;
+.container-fluid {
+    padding: 0;
 }
 
-.navbar{
+.navbar {
     border-radius: 0px;
-    margin:0px;
+    margin: 0px;
 }
+
 /* ========导航部分结束========= */
 
 /* ========幻灯片部分开始========= */
@@ -37,16 +38,19 @@
     line-height: 24px;
     text-align: center;
 
-    color: rgba(255,255,255,.6);
-    text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);
+    color: rgba(255, 255, 255, .6);
+    text-shadow: 0 0 1px rgba(0, 0, 0, .05), 0 1px 2px rgba(0, 0, 0, .3);
 
     background: #5b4d3d;
-    box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    margin-bottom: 4px;
 }
+
 .banner ul {
     list-style: none;
     width: 300%;
 }
+
 .banner ul li {
     display: block;
     float: left;
@@ -59,7 +63,7 @@
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 
-    box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
+    box-shadow: inset 0 -3px 6px rgba(0, 0, 0, .1);
 }
 
 .banner .inner {
@@ -85,26 +89,28 @@
     text-transform: uppercase;
     text-decoration: none;
 
-    border: 2px solid rgba(255,255,255,.4);
+    border: 2px solid rgba(255, 255, 255, .4);
     border-radius: 5px;
 }
+
 .banner .btn:hover {
-    background: rgba(255,255,255,.05);
+    background: rgba(255, 255, 255, .05);
 }
+
 .banner .btn:active {
-    -webkit-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
-    -moz-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
-    -ms-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
-    -o-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
-    filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+    -webkit-filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, .5));
+    -moz-filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, .5));
+    -ms-filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, .5));
+    -o-filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, .5));
+    filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, .5));
 }
 
 .banner .btn, .banner .dot {
-    -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    -webkit-filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
+    -moz-filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
+    -ms-filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
+    -o-filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
 }
 
 .banner .dots {
@@ -114,6 +120,7 @@
     bottom: 20px;
     width: 100%;
 }
+
 .banner .dots li {
     display: inline-block;
     *display: inline;
@@ -137,6 +144,7 @@
     -moz-transition: background .5s, opacity .5s;
     transition: background .5s, opacity .5s;
 }
+
 .banner .dots li.active {
     background: #fff;
     opacity: 1;
@@ -148,12 +156,12 @@
     right: 20px;
     color: #fff;
 }
+
 .banner .arrow {
     display: inline;
     padding-left: 10px;
     cursor: pointer;
 }
-
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px), (max-width: 900px) {
 
@@ -161,13 +169,16 @@
         font-size: 24px;
         line-height: 30px;
     }
+
     .banner ul li {
         height: 240px;
     }
+
     .banner .inner {
         padding-top: 100px;
         padding-bottom: 50px;
     }
+
     .banner p {
         font-size: 15px;
         width: 80%;
@@ -177,8 +188,44 @@
 
 /* ========幻灯片部分结束========= */
 
-/* ========主页下的分类文章=========*/
+/* ========导航=========*/
 
-#twonav{
-    margin-top:15px;
+.nav {
+    height: 170px;
+    background: #e0e0e0;
+    padding: 0 5%;
+    overflow: hidden;
+
+}
+
+.nav .nav-item {
+    margin: 0 2%;
+    height: inherit;
+    width: 21%;
+    float: left;
+}
+
+.nav .nav-item .icon {
+    width: 100%;
+    height: 60%;
+    margin: 20% auto;
+    border: 1px solid #fff;
+    border-radius: 80%;
+    overflow: hidden;
+    background: #fff;
+}
+.nav .nav-item .title {
+    height: 20%;
+    text-align: center;
+    padding-bottom: 2px;
+}
+
+.clearfix {
+    clear: none;
+}
+
+.ad{
+    background: url("../img/unslider/sunset.jpg");
+    height: 50px;
+    background-size: 100% 100%;
 }
