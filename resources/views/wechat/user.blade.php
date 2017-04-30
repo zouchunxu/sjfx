@@ -2,9 +2,7 @@
     <head>
         <title>用户中心</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="/assets/wechat/base.css">
         <link rel="stylesheet" href="/assets/wechat/user.css">
-        <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         @include('wechat.base')
     </head>

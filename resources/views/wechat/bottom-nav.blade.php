@@ -1,6 +1,6 @@
-<div style="height: 60px;"></div>
+<div style="clear:both;height: 60px;"></div>
 <div class="bottom-nav">
-    <div class="nav-item">
+    <div class="nav-item active">
         <div class="icon">
             <span class="fa fa-home"></span>
         </div>
@@ -8,7 +8,7 @@
             农场主页
         </div>
     </div>
-    <div class="nav-item active">
+    <div class="nav-item">
         <div class="icon">
             <span class="fa fa-shopping-cart"></span>
         </div>

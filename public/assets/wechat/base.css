@@ -7,6 +7,14 @@ body {
     width: 100%;
 }
 
+* {
+    -webkit-font-smoothing: antialiased;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .container {
     width: 100%;
     overflow: auto;
@@ -36,6 +44,7 @@ body {
     font-size: 1.5em;
     padding-top: 4px;
 }
+
 .bottom-nav .nav-item .title {
     height: 40%;
     text-align: center;
@@ -44,4 +53,71 @@ body {
 
 .bottom-nav .active {
     color: green;
+}
+
+.text-center {
+    text-align: center
+}
+
+.clear {
+    clear: both
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.green {
+    color: green;
+}
+
+.mb-10 {
+    margin-bottom: 10px
+}
+
+.mb-5 {
+    margin-bottom: 5px
+}
+
+.ml-5 {
+    margin-left: 5px
+}
+
+.mr-5 {
+    margin-right: 5px
+}
+
+.mt-10 {
+    margin-top: 10px
+}
+
+.mt-5 {
+    margin-top: 5px
+}
+
+.col-3 {
+    width: calc(25% - 3px);
+    float: left;
+}
+
+.col-4 {
+    width: calc(33.3% - 2px);
+    float: left;
+}
+
+.col-2 {
+    width: calc(50% - 1px);
+    float: left;
 }

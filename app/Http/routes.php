@@ -28,6 +28,7 @@ Route::any('/admin-loginout','Admin\IndexController@loginOut');
 Route::controller('index', 'Wechat\IndexController');
 
 Route::controller('user','Wechat\UserController');
+Route::controller('good','Wechat\GoodController');
 
 Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
 
