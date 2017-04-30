@@ -26,10 +26,13 @@ Route::any('/admin-login','Admin\IndexController@login');
 Route::any('/admin-loginout','Admin\IndexController@loginOut');
 
 Route::controller('index', 'Wechat\IndexController');
+
+Route::controller('user','Wechat\UserController');
+
 Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
 
     Route::controller('qrcode', 'Wechat\QrcodeController');
-    Route::controller('user','Wechat\UserController');
+
 });
 
 Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {

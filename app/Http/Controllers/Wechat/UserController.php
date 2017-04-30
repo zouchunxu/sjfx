@@ -7,6 +7,6 @@ class UserController extends Controller
 {
     public function anyIndex()
     {
-
+        return view('wechat.user');
     }
 }
