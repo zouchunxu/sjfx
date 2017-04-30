@@ -9,7 +9,8 @@ body {
 
 * {
     -webkit-font-smoothing: antialiased;
-
+    padding: 0;
+    margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -27,7 +28,10 @@ body {
     width: 100%;
     bottom: 0;
     background: #fff;
-    color: #bbb;
+    color: #bbb !important;
+}
+.bottom-nav a{
+    color: #bbb !important;
 }
 
 .bottom-nav .nav-item {
@@ -52,7 +56,7 @@ body {
 }
 
 .bottom-nav .active {
-    color: green;
+    color: green !important;
 }
 
 .text-center {
