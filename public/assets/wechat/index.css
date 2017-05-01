@@ -237,6 +237,7 @@
 .list-item .logo {
     height: 75%;
     overflow: hidden;
+    background: #fff;
 }
 
 .list-item .logo img {

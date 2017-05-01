@@ -39,21 +39,21 @@
                                         <i class="fa fa-envelope-o circular"></i>
                                     </span>
                                 </div>
-                                <div class="form-group">
-                                    <span class="input-icon icon-right">
-                                        <input type="text" class="form-control" name="password"
-                                               id="passwordInput" placeholder="登陆密码">
-                                        <i class="fa fa-lock circular"></i>
-                                    </span>
-                                </div>
-                                <div class="form-group">
-                                    <span class="input-icon icon-right">
-                                        <input type="text" class="form-control"
-                                               id="confirmPasswordInput" name="password_confirmation"
-                                               placeholder="确认密码">
-                                        <i class="fa fa-lock circular"></i>
-                                    </span>
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<span class="input-icon icon-right">--}}
+                                        {{--<input type="text" class="form-control" name="password"--}}
+                                               {{--id="passwordInput" placeholder="登陆密码">--}}
+                                        {{--<i class="fa fa-lock circular"></i>--}}
+                                    {{--</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<span class="input-icon icon-right">--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                               {{--id="confirmPasswordInput" name="password_confirmation"--}}
+                                               {{--placeholder="确认密码">--}}
+                                        {{--<i class="fa fa-lock circular"></i>--}}
+                                    {{--</span>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <span class="input-icon icon-right">
                                         <input type="text" value="{{ empty($user->qq_code)?'':$user->qq_code }}" class="form-control"

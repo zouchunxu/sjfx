@@ -20,7 +20,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'name' => 'required|unique:users|max:32',
                 'email' => 'unique:users|email',
-                'password' => 'required|confirmed',
+//                'password' => 'required|confirmed',
                 'qq_code' => 'integer',
                 'phone' => 'unique:users',
                 'integral' => 'integer',
@@ -58,7 +58,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'name' => 'required|unique:users,name,' . $request->uid . ',uid|max:32',
                 'email' => 'unique:users,email,' . $request->uid . ',uid|email',
-                'password' => 'confirmed',
+//                'password' => 'confirmed',
                 'qq_code' => 'integer',
                 'phone' => 'unique:users,phone,' . $request->uid . ',uid',
                 'integral' => 'integer',

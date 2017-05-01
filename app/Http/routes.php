@@ -25,13 +25,14 @@ Route::any('/qrcode-img', 'WechatController@qrcodeImg');
 Route::any('/admin-login','Admin\IndexController@login');
 Route::any('/admin-loginout','Admin\IndexController@loginOut');
 
-Route::controller('index', 'Wechat\IndexController');
 
-Route::controller('user','Wechat\UserController');
-Route::controller('good','Wechat\GoodController');
 
-Route::group(['as' => 'wechat::', 'middleware' => 'wechat.oauth:snsapi_userinfo'], function () {
 
+
+Route::group(['as' => 'wechat::', 'middleware' => ['wechat.oauth:snsapi_userinfo','wechat']], function () {
+    Route::controller('index', 'Wechat\IndexController');
+    Route::controller('user','Wechat\UserController');
+    Route::controller('good','Wechat\GoodController');
     Route::controller('qrcode', 'Wechat\QrcodeController');
 
 });
@@ -46,6 +47,7 @@ Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
         'anyList' => 'category.index',
         'anyUpd' => 'category.upd',
         'anyDel' => 'category.del',
+
     ]);
 
     Route::controller('ware', 'Admin\WareController', [

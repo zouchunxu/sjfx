@@ -83,25 +83,29 @@
     </div>
     <div class="ad"></div>
     <div class="list">
-        <div class="list-item">
-            <div class="logo">
-                <img src="/assets/img/unslider/shop.jpg" alt="">
-            </div>
-            <div class="title">
-                <div class="name">
-                    测试一下
+        @foreach($lists as $list)
+            <div class="list-item">
+                <div class="logo">
+                    <img src="{{ $list->logo }}" alt="">
                 </div>
-                <div class="other">
-                    <div class="price">
-                        ¥88.00
+                <div class="title">
+                    <div class="name">
+                        {{ mb_substr($list->title,0,10) }}
                     </div>
-                    <div class="detail">
-                        详情 >
+                    <div class="other">
+                        <div class="price">
+                            ¥{{ number_format($list->trait['price'],2) }}
+                        </div>
+                        <a class="detail">
+                            详情 >
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="list-item">
+
+        @endforeach
+
+       {{-- <div class="list-item">
             <div class="logo">
                 <img src="/assets/img/unslider/shop.jpg" alt="">
             </div>
@@ -155,7 +159,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </div>
 @include('wechat.bottom-nav')

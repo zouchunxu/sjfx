@@ -15,6 +15,12 @@ class Ware extends Model
 
     public function getCategory()
     {
-        return $this->hasOne(Category::class,'id','category_id');
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
+
+    public function getTraitAttribute($value)
+    {
+        return json_decode($value,true);
+    }
+
 }
