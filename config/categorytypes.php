@@ -31,6 +31,9 @@ return [
                 'name' => '增加几块'
             ]
         ]
+    ],
+    'map' => [
+        0 => \App\Common\Buy\Normally::class
     ]
 
 ];

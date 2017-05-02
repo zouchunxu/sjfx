@@ -17,7 +17,7 @@ Route::any('/', function () {
 
 Route::controller('config', 'ConfigController');
 
-Route::any('/wechat', 'WechatController@serve');
+
 Route::any('/qrcode-img', 'WechatController@qrcodeImg');
 //Route::get('/',function(){
 //    return showMsg('测试一下好不好用','/useradd');
@@ -27,8 +27,7 @@ Route::any('/admin-loginout','Admin\IndexController@loginOut');
 
 
 
-
-
+Route::any('/wechat', 'WechatController@serve');
 Route::group(['as' => 'wechat::', 'middleware' => ['wechat.oauth:snsapi_userinfo','wechat']], function () {
     Route::controller('index', 'Wechat\IndexController');
     Route::controller('user','Wechat\UserController');

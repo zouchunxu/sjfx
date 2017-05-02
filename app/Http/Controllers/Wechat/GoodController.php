@@ -3,8 +3,10 @@ namespace App\Http\Controllers\Wechat;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\MyGood;
 use App\Models\Ware;
+use App\User;
+use Illuminate\Http\Request;
 
 class GoodController extends Controller
 {
@@ -17,21 +19,29 @@ class GoodController extends Controller
         ]);
     }
 
+    public function anyMyGoods(Request $request)
+    {
+        $status = $request->input('status',0);
+        $uid = session('wechatDb.uid');
+        return MyGood::query()->with('ware')->where('status',$status)->where('uid',$uid)->get();
+    }
+
+
+    public function anyBuy(Request $request)
+    {
+        $wareId = $request->input('ware_id');
+        $uid = session('wechatDb.uid');
+        $ware = Ware::find($wareId);
+        $user = User::find($uid);
+        $map = config('categorytypes.map');
+        $class = array_get($map, $ware->getCatType());
+        $buy = new $class($ware, $user);
+        $buy->buy();
+    }
+
     private function getWares($type)
     {
-        static $_cache;
-        if (empty($_cache)) {
-            $types = Category::lists('type','id');
-
-            $wares = Ware::orderBy('id', 'desc')->get();
-            foreach ($wares as $ware) {
-                $type = $types[$ware->category_id];
-                $_cache[$type][] = $ware;
-            }
-        }
-        return array_get($_cache,$type);
-
-
+        return Ware::getWares($type);
     }
 
 }

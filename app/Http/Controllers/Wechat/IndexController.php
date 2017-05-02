@@ -13,11 +13,8 @@ class IndexController extends Controller
 
     public function getIndex()
     {
-        $wares = Ware::orderBy('id', 'desc')->get();
-
-
         return view('wechat.index')->with([
-            'lists' => $wares
+            'lists' => Ware::getWares(1)
         ]);
     }
 

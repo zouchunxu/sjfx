@@ -19,7 +19,7 @@ class WechatMiddleware
         $wechat = session('wechat.oauth_user');
         if ($wechat) {
             $token = $wechat['token'];
-            $user = User::firstOrNew(['access_token' => $token['access_token']]);
+            $user = User::firstOrNew(['open_id' => $token['openid']]);
             $user->name = $wechat['name'];
             $user->email = strval($wechat['email']);
             $user->nick_name = strval($wechat['nickname']);
