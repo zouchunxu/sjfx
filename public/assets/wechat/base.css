@@ -2,7 +2,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, '微软雅黑', '宋体', sans-serif;
-    font-size: 1em;
+    /*font-size: 1em;*/
     height: 100%;
     width: 100%;
 }
@@ -45,7 +45,7 @@ body {
 .bottom-nav .nav-item .icon {
     height: 60%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.5em !important;
     padding-top: 4px;
 }
 
@@ -125,3 +125,5 @@ body {
     width: calc(50% - 1px);
     float: left;
 }
+
+.btn-flat {border-radius: 0}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\UserMapLog;
 use App\User;
 use Closure;
 
@@ -27,8 +28,11 @@ class WechatMiddleware
             $user->sex = $wechat['original']['sex'] == 1 ? '男' : '女';
             $user->open_id = $token['openid'];
             $user->access_token = $token['access_token'];
+            if (empty($user->super)) {
+                $user->super = UserMapLog::getSuperUid($token['openid']);
+            }
             $user->save();
-            session(['wechatDb'=>$user->toArray()]);
+            session(['wechatDb' => $user->toArray()]);
             return $next($request);
         }
     }

@@ -79,9 +79,9 @@
                                             </div>
                                             <div class="widget-body">
                                                 <div class="widget-main no-padding">
-                                                    <div id="summernote" name="summernote">
+                                                    <textarea id="summernote" name="desc">
                                                         {!! !empty($ware->desc)?$ware->desc:'' !!}
-                                                    </div>
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>

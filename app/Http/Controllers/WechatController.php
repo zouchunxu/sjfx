@@ -28,9 +28,19 @@ class WechatController extends Controller
 //        $Wechat = app('Wechat');
         $this->wechat->server->setMessageHandler(function ($message) {
             if ($message->MsgType == 'event') {
-
-//                $message->FromUserName
+                $openId = $message->FromUserName;
                 $uid = $message->EventKey;
+                $log = UserMapLog::query()->where([
+                    'open_id' => $openId,
+                    'uid' => $uid
+                ])->first();
+                if (empty($log->open_id)) {
+                    $log = new UserMapLog();
+                    $log->open_id = $openId;
+                    $log->uid = $uid;
+                    $log->save();
+                }
+
                 return $uid;
             }
 

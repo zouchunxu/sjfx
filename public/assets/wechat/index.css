@@ -233,7 +233,9 @@
     float: left;
     height: 180px;
 }
-
+.list-item a{
+    text-decoration:none;
+}
 .list-item .logo {
     height: 75%;
     overflow: hidden;

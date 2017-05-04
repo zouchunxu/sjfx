@@ -1,6 +1,6 @@
-<div style="clear:both;height: 60px;"></div>
+<div class="block" style="clear:both;height: 60px;"></div>
 <div class="bottom-nav">
-    <a href="/index">
+    <a href="/index/index">
         <div class="nav-item">
             <div class="icon">
                 <span class="fa fa-home"></span>
@@ -20,15 +20,17 @@
             </div>
         </div>
     </a>
-    <div class="nav-item">
-        <div class="icon">
-            <span class="fa fa-user"></span>
+    <a href="/user/my-home">
+        <div class="nav-item">
+            <div class="icon">
+                <span class="fa fa-user"></span>
+            </div>
+            <div class="title">
+                我的庄园
+            </div>
         </div>
-        <div class="title">
-            我的庄园
-        </div>
-    </div>
-    <a href="/user">
+    </a>
+    <a href="/user/index">
         <div class="nav-item">
             <div class="icon">
                 <span class="fa fa-tree"></span>
@@ -51,7 +53,7 @@
         var wechatCurrentUrl = window.location.pathname;
 
         $('.bottom-nav a').each(function () {
-            if (typeof $(this).attr('href') == 'string' && wechatCurrentUrl.match($(this).attr('href'))) {
+            if (typeof $(this).attr('href') == 'string' && $(this).attr('href').match(wechatCurrentUrl)) {
                 $(this).find('.nav-item').addClass('active');
             }
         });

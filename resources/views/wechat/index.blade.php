@@ -2,10 +2,7 @@
 <head>
     <title>首页</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/assets/wechat/base.css">
-    <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/wechat/index.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     @include('wechat.base')
 </head>
 <body>
@@ -86,7 +83,7 @@
         @foreach($lists as $list)
             <div class="list-item">
                 <div class="logo">
-                    <img src="{{ $list->logo }}" alt="">
+                    <img src="/{{ $list->logo }}" alt="">
                 </div>
                 <div class="title">
                     <div class="name">
@@ -96,7 +93,7 @@
                         <div class="price">
                             ¥{{ number_format($list->trait['price'],2) }}
                         </div>
-                        <a class="detail">
+                        <a class="detail" href="/good/detail?id={{ $list->id }}">
                             详情 >
                         </a>
                     </div>

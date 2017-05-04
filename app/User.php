@@ -85,5 +85,8 @@ class User extends Model implements AuthenticatableContract,
         return $this->virtual_gold;
     }
 
-
+    public function superInfo()
+    {
+        return $this->hasOne(self::class,'super','uid');
+    }
 }

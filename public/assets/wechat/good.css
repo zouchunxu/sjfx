@@ -93,3 +93,7 @@
     margin-top:-2%;
     border-radius: 10px;
 }
+
+.list-item a{
+    text-decoration:none;
+}

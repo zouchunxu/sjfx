@@ -79,7 +79,7 @@ class WareController extends Controller
                 $imgFile = '';
             }
             $traits = $request->input('trait');
-            $data = array_merge($request->except('_token', 'trait'), [
+            $data = array_merge($request->except('_token', 'trait','files'), [
                 'trait' => json_encode($traits)
             ]);
             if(!empty($imgFile)){

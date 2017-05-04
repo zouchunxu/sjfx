@@ -21,11 +21,39 @@ class GoodController extends Controller
 
     public function anyMyGoods(Request $request)
     {
-        $status = $request->input('status',0);
         $uid = session('wechatDb.uid');
-        return MyGood::query()->with('ware')->where('status',$status)->where('uid',$uid)->get();
+        $cid = $request->input('cid', 1);
+        $good = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
+            ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
+            ->where('category_id', $cid)->where('uid', $uid);
+
+        $goods =$good->where('status', 0)->get();
+
+        foreach ($goods as $good) {
+            $time = intval($good->ware->trait['expired']-((time()-strtotime($good->created_at))/60/60));
+            if($time < 0){
+                $good->status = 1;
+            }
+            $good->save();
+        }
+
+        return view('wechat.my-good')->with([
+            'goods1' => $good->where('status', 0)->get(),
+            'goods2' => $good->where('status', 1)->get()
+        ]);
     }
 
+    public function anyReward(Request $request)
+    {
+        $id = $request->input('id');
+        $good = MyGood::query()->find($id);
+
+    }
+
+    public function anyGoodInfo()
+    {
+        return view('wechat.good-info');
+    }
 
     public function anyBuy(Request $request)
     {
@@ -43,5 +71,14 @@ class GoodController extends Controller
     {
         return Ware::getWares($type);
     }
+
+    public function anyDetail(Request $request)
+    {
+        $id = $request->input('id');
+        return view('wechat.good-info')->with([
+            'good' => Ware::query()->find($id)
+        ]);
+    }
+
 
 }

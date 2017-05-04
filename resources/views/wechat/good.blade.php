@@ -48,7 +48,7 @@
                                     <div class="price">
                                         ¥{{ number_format($list->trait['price'],2) }}
                                     </div>
-                                    <a class="detail">
+                                    <a class="detail" href="/good/detail?id={{ $list->id }}">
                                         详情 >
                                     </a>
                                 </div>
@@ -79,7 +79,7 @@
                                     <div class="price">
 {{--                                        ¥{{ number_format($list->trait['price'],2) }}--}}
                                     </div>
-                                    <a class="detail">
+                                    <a class="detail" href="/good/detail?id={{ $list->id }}">
                                         详情 >
                                     </a>
                                 </div>
@@ -110,7 +110,7 @@
                                     <div class="price">
                                         ¥{{ number_format($list->trait['price'],2) }}
                                     </div>
-                                    <a class="detail">
+                                    <a class="detail" href="/good/detail?id={{ $list->id }}">
                                         详情 >
                                     </a>
                                 </div>
