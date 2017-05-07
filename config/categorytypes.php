@@ -9,21 +9,26 @@ return [
     'fields' => [
         0 => [
             'expired' => [
-                'name' => '有效时间（小时）'
+                'name' => '有效时间（小时）',
+                'desc' => '有效时间'
             ],
             'income' => [
-                'name' => '收益（120-130）'
+                'name' => '收益（120-130）',
+                'desc' => '收益'
             ],
             'price' => [
-                'name' => '金币'
+                'name' => '金币',
+                'desc' => '金币'
             ]
         ],
         1 => [
-            'gold' => [
-                'name' => '金币'
+            'price' => [
+                'name' => '金币',
+                'desc' => '金币'
             ],
             'integral' => [
-                'name' => '积分'
+                'name' => '积分',
+                'desc' => '积分'
             ]
         ],
         2 => [
@@ -33,7 +38,8 @@ return [
         ]
     ],
     'map' => [
-        0 => \App\Common\Buy\Normally::class
+        0 => \App\Common\Buy\Normally::class,
+        1 => \App\Common\Buy\Integral::class
     ]
 
 ];

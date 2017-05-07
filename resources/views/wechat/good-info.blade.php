@@ -76,17 +76,18 @@
     <div class="good-name">
         {{ $good->title }}
     </div>
-    <div class="good-attr">
-        <span>生长周期：</span>
-        {{ $good->trait['expired'] }}小时
-    </div>
+    @if(is_array($good->trait))
+        @foreach($good->trait as $key => $val)
+            <div class="good-attr">
+                <span>{{ !empty($types[$key]) ? $types[$key]['desc'] : '属性'}}：</span>
+                {{ $val }}
+            </div>
+
+        @endforeach
+    @endif
     <div class="good-attr">
         <span>简介：</span>
         {{ $good->summary }}
-    </div>
-    <div class="good-attr">
-        <span>价格：</span>
-        {{ number_format($good->trait['price'],2) }}
     </div>
     <div class="good-footer">
         <div class="col-xs-6 good-attr">
@@ -110,8 +111,8 @@
     var width = $('body').width();
     $("img").width(width);
     $("#buy").click(function(){
-        $.post("/good/buy", {'ware_id': wareId}, function () {
-            layer.msg("购买成功！");
+        $.post("/good/buy", {'ware_id': wareId}, function (data) {
+            layer.msg(data.msg);
         });
     });
 

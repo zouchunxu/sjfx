@@ -41,10 +41,9 @@ class WechatController extends Controller
                     $log->save();
                 }
 
-                return $uid;
             }
 
-            return '欢迎关注';
+            return 'http://sjfx.zcx521.com/index';
         });
 
         Log::info('return response.');

@@ -2,7 +2,9 @@
 namespace App\Http\Controllers\Wechat;
 
 
+use App\Common\Buy\BuyException;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\MyGood;
 use App\Models\Ware;
 use App\User;
@@ -59,12 +61,23 @@ class GoodController extends Controller
     {
         $wareId = $request->input('ware_id');
         $uid = session('wechatDb.uid');
-        $ware = Ware::find($wareId);
-        $user = User::find($uid);
-        $map = config('categorytypes.map');
-        $class = array_get($map, $ware->getCatType());
-        $buy = new $class($ware, $user);
-        $buy->buy();
+        try{
+            $ware = Ware::find($wareId);
+            $user = User::find($uid);
+            $map = config('categorytypes.map');
+            $class = array_get($map, $ware->getCatType());
+            $buy = new $class($ware, $user);
+            $buy->buy();
+        }catch (\Exception $exception){
+            return [
+                'error' => 1,
+                'msg' => $exception->getMessage()
+            ];
+        }
+        return [
+            'error' => 0,
+            'msg' => '购买成功！'
+        ];
     }
 
     private function getWares($type)
@@ -75,8 +88,12 @@ class GoodController extends Controller
     public function anyDetail(Request $request)
     {
         $id = $request->input('id');
+        $good =  Ware::query()->find($id);
+        $key = Category::query()->lists('type','id')->toArray();
+
         return view('wechat.good-info')->with([
-            'good' => Ware::query()->find($id)
+            'good' => $good,
+            'types' => config('categorytypes.fields.'.$key[$good['category_id']]),
         ]);
     }
 

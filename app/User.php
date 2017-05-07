@@ -74,6 +74,11 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
+    public function incrementIntegral($incr = 1)
+    {
+        return $this->increment('integral',$incr);
+    }
+
 
     public function getRealGold()
     {
@@ -87,6 +92,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function superInfo()
     {
-        return $this->hasOne(self::class,'super','uid');
+        return $this->hasOne(self::class, 'uid', 'super');
     }
 }

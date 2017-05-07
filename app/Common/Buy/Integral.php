@@ -1,10 +1,10 @@
 <?php
 namespace App\Common\Buy;
 
+use App\Models\ApplyIntegralShop;
 use DB;
-use App\Models\MyGood;
 
-class Normally extends BuyClass
+class Integral extends BuyClass
 {
 
 
@@ -12,18 +12,24 @@ class Normally extends BuyClass
     {
         $trait = $this->ware->trait;
         $price = $trait['price'];
+        $integral = $trait['integral'];
         $userPrice = $this->user->getAllGold();
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
+        if ($integral > $this->user->integral) {
+            throw new BuyException('积分不足！');
+        }
+
+        $subIntegral = $integral - $price;
         try {
             DB::beginTransaction();
-            MyGood::create([
-                'ware_id' => $this->ware->id,
+            ApplyIntegralShop::create([
                 'uid' => $this->user->uid,
+                'ware_id' => $this->ware->id,
                 'status' => 0
             ]);
-            $this->user->incrementIntegral($price);
+            $this->user->incrementIntegral($subIntegral);
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {

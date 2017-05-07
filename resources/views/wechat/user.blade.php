@@ -28,7 +28,7 @@
                         <span><strong class="green">•</strong> 农场主级别：普通用户</span>
                     </div>
                     <div class="col-2 mb-10">
-                        <span><strong class="green">•</strong> 推荐人：{{ $user->superInfo->nick_name }}</span>
+                        <span><strong class="green">•</strong> 推荐人：{{ is_object($user->superInfo) ? $user->superInfo->nick_name : '无' }}</span>
                     </div>
                     <div class="col-2 mb-5">
                         <span><strong class="green">•</strong> 平台总人数：66666</span>
@@ -77,30 +77,36 @@
                     </div>
                     <div>我的好友</div>
                 </div>
-                <div class="col-4">
-                    <div class="tool-img">
-                        <img src="" alt=""/>
+                <a href="/user/cash">
+                    <div class="col-4">
+                        <div class="tool-img">
+                            <img src="" alt=""/>
+                        </div>
+                        <div>金币提现</div>
                     </div>
-                    <div>金币提现</div>
-                </div>
+                </a>
                 <div class="col-4">
                     <div class="tool-img">
                         <img src="" alt=""/>
                     </div>
                     <div>福利提现</div>
                 </div>
-                <div class="col-4">
-                    <div class="tool-img">
-                        <img src="" alt=""/>
+                <a href="/user/cash-list">
+                    <div class="col-4">
+                        <div class="tool-img">
+                            <img src="" alt=""/>
+                        </div>
+                        <div>提现记录</div>
                     </div>
-                    <div>提现记录</div>
-                </div>
-                <div class="col-4">
-                    <div class="tool-img">
-                        <img src="" alt=""/>
+                </a>
+                <a href="/user/convert-list">
+                    <div class="col-4">
+                        <div class="tool-img">
+                            <img src="" alt=""/>
+                        </div>
+                        <div>兑换订单</div>
                     </div>
-                    <div>兑换订单</div>
-                </div>
+                </a>
                 <div class="col-4">
                     <div class="tool-img">
                         <img src="" alt=""/>
