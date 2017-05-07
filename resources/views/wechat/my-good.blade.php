@@ -4,12 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	@include('wechat.base')
-	<script src="/assets/js/jquery-2.0.3.min.js"></script>
 	<style>
 		body {background: rgb(239,239,239)}
 		.tabset {height:38px;}
 		.tabset .col-2 {font-size: 16px;}
-		.tabset .col-2 div {    
+		.tabset .col-2 div {
 			padding: 1px 10px;
 		    width: 70px;
 		    margin: 0 auto;
@@ -27,7 +26,7 @@
 		}
 		.tabset .col-2 i {
 			border: 8px solid;
-			border-color: transparent transparent white transparent;    
+			border-color: transparent transparent white transparent;
 			display: block;
 		    width: 0;
 		    margin: 0 auto;
@@ -86,6 +85,9 @@
 
 		.relative {position: relative;}
 		.bg-green {background: green;}
+		.process-info a{
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -164,7 +166,7 @@
 								进程
 							</div>
 							<div class="process-info">
-								<div class="item-process-time">
+								<div class="item-process-time" onclick="reward('{{ $item->id }}',this)">
 									点击收获
 								</div>
 								<div class="item-process-bar">
@@ -193,6 +195,17 @@
 		$('.tabset .col-2 i.up-icon').css('display', 'none').eq(i).css('display', 'block');
 		$('.manor .good-list').css('display', 'none').eq(i).css('display', 'block')
 	}
+
+
+	function reward(id,obj){
+        $.post('/good/reward',{'id':id},function(data){
+            if(data.error == 0){
+                $(obj).parents('.item').fadeOut(600);
+            }
+            layer.msg(data.msg);
+        });
+    }
+
     selectTab(0);
 </script>
 </html>

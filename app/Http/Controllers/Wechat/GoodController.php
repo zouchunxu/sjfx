@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Wechat;
 
 
-use App\Common\Buy\BuyException;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\MyGood;
@@ -29,11 +28,11 @@ class GoodController extends Controller
             ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
             ->where('category_id', $cid)->where('uid', $uid);
 
-        $goods =$good->where('status', 0)->get();
+        $goods = $good->where('status', 0)->get();
 
         foreach ($goods as $good) {
-            $time = intval($good->ware->trait['expired']-((time()-strtotime($good->created_at))/60/60));
-            if($time < 0){
+            $time = intval($good->ware->trait['expired'] - ((time() - strtotime($good->created_at)) / 60 / 60));
+            if ($time < 0) {
                 $good->status = 1;
             }
             $good->save();
@@ -47,8 +46,20 @@ class GoodController extends Controller
 
     public function anyReward(Request $request)
     {
-        $id = $request->input('id');
-        $good = MyGood::query()->find($id);
+        try {
+            $id = $request->input('id');
+            $uid = session('wechatDb.uid');
+            MyGood::reward($uid,$id);
+        } catch (\Exception $e) {
+            return [
+                'error' => 1,
+                'msg' => $e->getMessage()
+            ];
+        }
+        return [
+            'error' => 0,
+            'msg' => '收获成功！'
+        ];
 
     }
 
@@ -61,14 +72,14 @@ class GoodController extends Controller
     {
         $wareId = $request->input('ware_id');
         $uid = session('wechatDb.uid');
-        try{
+        try {
             $ware = Ware::find($wareId);
             $user = User::find($uid);
             $map = config('categorytypes.map');
             $class = array_get($map, $ware->getCatType());
             $buy = new $class($ware, $user);
             $buy->buy();
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return [
                 'error' => 1,
                 'msg' => $exception->getMessage()
@@ -88,12 +99,12 @@ class GoodController extends Controller
     public function anyDetail(Request $request)
     {
         $id = $request->input('id');
-        $good =  Ware::query()->find($id);
-        $key = Category::query()->lists('type','id')->toArray();
+        $good = Ware::query()->find($id);
+        $key = Category::query()->lists('type', 'id')->toArray();
 
         return view('wechat.good-info')->with([
             'good' => $good,
-            'types' => config('categorytypes.fields.'.$key[$good['category_id']]),
+            'types' => config('categorytypes.fields.' . $key[$good['category_id']]),
         ]);
     }
 

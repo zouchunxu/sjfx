@@ -18,19 +18,22 @@
         <tr>
             <th>日期</th>
             <th>兑换商品</th>
-            <th>姓名</th>
-            <th>地址</th>
-            <th>联系电话</th>
+            {{--<th>姓名</th>--}}
+            {{--<th>地址</th>--}}
+            {{--<th>联系电话</th>--}}
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>2017.5.3</td>
-            <td>Iphone 7</td>
-            <td>张三</td>
-            <td>深圳市福田区</td>
-            <td>135xxxxxxxx</td>
-        </tr>
+        @foreach($lists as $list)
+            <tr>
+                <td>{{ $list->created_at }}</td>
+                <td>{{ $list->ware->title }}</td>
+                {{--<td>{{ session('wechatDb.actual_name') }}</td>--}}
+                {{--<td>{{ session('wechatDb.full_address') }}</td>--}}
+                {{--<td>{{ session('wechatDb.phone') }}</td>--}}
+            </tr>
+        @endforeach
+
         </tbody>
     </table>
 </div>

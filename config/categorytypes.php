@@ -4,7 +4,8 @@ return [
         0 => '农作物',
         1 => '积分兑换',
         2 => '土地鱼塘',
-        3 => '农作物消耗品'
+        3 => '农作物消耗品',
+        4 => '管家'
     ],
     'fields' => [
         0 => [
@@ -35,11 +36,18 @@ return [
             'count' => [
                 'name' => '增加几块'
             ]
+        ],
+        4 => [
+            'price' => [
+                'name' => '金币',
+                'desc' => '金币'
+            ]
         ]
     ],
     'map' => [
         0 => \App\Common\Buy\Normally::class,
-        1 => \App\Common\Buy\Integral::class
+        1 => \App\Common\Buy\Integral::class,
+        4 => \App\Common\Buy\Far
     ]
 
 ];

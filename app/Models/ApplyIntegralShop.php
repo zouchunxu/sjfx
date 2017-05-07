@@ -9,4 +9,9 @@ class ApplyIntegralShop extends Model
 
     protected $guarded = ['id'];
 
+    public function ware()
+    {
+        return $this->hasOne(Ware::class,'id','ware_id');
+    }
+
 }

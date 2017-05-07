@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Wechat;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApplyIntegralShop;
 use App\Models\UserWithdraw;
 use App\User;
 use EasyWeChat\Foundation\Application;
@@ -92,7 +93,11 @@ class UserController extends Controller
 
     public function anyConvertList()
     {
-        return view('wechat.convert-list');
+        return view('wechat.convert-list')->with([
+            'lists' => ApplyIntegralShop::query()->with('ware')->where([
+                'uid' => session('wechatDb.uid')
+            ])->get()
+        ]);
     }
 
     public function anyScore()
