@@ -4,9 +4,8 @@ namespace App\Common\Buy;
 use App\Models\Farmer as F;
 use DB;
 
-class Farmer extends BuyClass
+class FarmerFood extends BuyClass
 {
-
 
     protected function _buy()
     {
@@ -16,22 +15,19 @@ class Farmer extends BuyClass
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
-        if(F::query()->where([
-            'ware_id' => $this->ware->id,
-            'uid' => $this->user->uid
-        ])->get()->toArray()){
-            throw new \Exception('你已经购买过，无需重复购买！');
-        }
 
         try {
             DB::beginTransaction();
-            F::create([
-                'ware_id' => $this->ware->id,
-                'uid' => $this->user->uid,
-                'expired' => 24 * 7,
-                'status' => 0
-            ]);
-            $this->user->incrementIntegral($price);
+            $farmer = F::query()->where([
+                'uid' => $this->user->uid
+            ])->first();
+            if ($farmer->status == 1) {
+                $farmer->expired = $trait['expired'];
+            } else {
+                $farmer->expired += $trait['expired'];
+            }
+            $farmer->status = 0;
+            $farmer->save();
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {

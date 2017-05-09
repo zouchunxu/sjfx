@@ -118,7 +118,7 @@
 							<div>{{ $item->ware->title }} * 1</div>
 							<div class="result">
 								<div>购买价格：￥{{ number_format($item->ware->trait['price'],2) }}</div>
-								<div>当前收益：{{$item->ware->trait['income']}}%</div>
+								<div>每天收益：{{$item->ware->trait['income']}}%</div>
 							</div>
 						</div>
 						<div class="item-process">
@@ -127,7 +127,7 @@
 							</div>
 							<div class="process-info">
 								<div class="item-process-time">
-									{{ intval($item->ware->trait['expired']-((time()-strtotime($item->created_at))/60/60)) }}小时后成熟
+									{{ intval(($item->ware->trait['expired']*24)-((time()-strtotime($item->created_at))/60/60)) }}小时后成熟
 {{--									{{ $item->created_at }}--}}
 								</div>
 								<div class="item-process-bar">

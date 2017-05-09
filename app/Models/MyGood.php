@@ -20,13 +20,12 @@ class MyGood extends Model
     {
         $good = MyGood::query()->find($id);
         $ware = $good->ware;
-        $time = strtotime("{$ware->created_at} +{$ware->traity['expired']}");
+        $time = strtotime("{$good->created_at} +{$ware->trait['expired']} day");
         $cur = time();
         if ($time <= $cur) {
             //增加用户收益
             try {
-                list($min, $max) = explode('-', $ware->trait['income']);
-                $rand = rand($min, $max);
+                $rand = $ware->trait['income'] * $ware->trait['expired'];
                 $ratio = $rand / 100;
                 $gain = number_format($ware->trait['price'] * $ratio, 2);
                 $gold = $gain * 0.7;
@@ -41,7 +40,7 @@ class MyGood extends Model
                 throw $exception;
             }
         } else {
-            throw new \Exception('还有成熟！');
+            throw new \Exception('还没有成熟！');
         }
 
     }

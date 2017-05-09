@@ -80,15 +80,17 @@
         @foreach($good->trait as $key => $val)
             <div class="good-attr">
                 <span>{{ !empty($types[$key]) ? $types[$key]['desc'] : '属性'}}：</span>
-                {{ $val }}
+                {{ $val }}{{ !empty($types[$key]['unit']) ? $types[$key]['unit'] : '' }}
             </div>
 
         @endforeach
     @endif
-    <div class="good-attr">
-        <span>简介：</span>
-        {{ $good->summary }}
-    </div>
+    @if(!empty( $good->summary))
+        <div class="good-attr">
+            <span>简介：</span>
+            {{ $good->summary }}
+        </div>
+    @endif
     <div class="good-footer">
         <div class="col-xs-6 good-attr">
         <div class="form-inline">

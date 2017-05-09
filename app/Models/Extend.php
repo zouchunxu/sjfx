@@ -4,16 +4,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Farmer extends Model
+class Extend extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'farmers';
+    protected $table = 'extends';
 
     protected $guarded = ['id'];
 
-    public function ware()
-    {
-        return $this->hasOne(Ware::class,'id','ware_id');
-    }
+
 }

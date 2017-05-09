@@ -1,42 +1,36 @@
 <?php
 namespace App\Common\Buy;
 
-use App\Models\Farmer as F;
+use App\Models\Extend;
 use DB;
 
-class Farmer extends BuyClass
+class MyExtend extends BuyClass
 {
-
-
     protected function _buy()
     {
         $trait = $this->ware->trait;
         $price = $trait['price'];
+        $count = $trait['count'];
+
         $userPrice = $this->user->getAllGold();
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
-        if(F::query()->where([
-            'ware_id' => $this->ware->id,
-            'uid' => $this->user->uid
-        ])->get()->toArray()){
-            throw new \Exception('你已经购买过，无需重复购买！');
-        }
 
         try {
             DB::beginTransaction();
-            F::create([
-                'ware_id' => $this->ware->id,
+            $extend = Extend::query()->firstOrNew([
                 'uid' => $this->user->uid,
-                'expired' => 24 * 7,
-                'status' => 0
+                'type' => 0
             ]);
+            $extend->count += $count;
+            $extend->save();
+
             $this->user->incrementIntegral($price);
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {
             throw $e;
         }
-
     }
 }

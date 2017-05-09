@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>现金提现</title>
+    <title>福利提现</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="/assets/wechat/base.css">
     <link rel="stylesheet" href="/assets/wechat/good.css">
@@ -16,16 +16,30 @@
     <table class="table table-bordered">
         <tbody>
         <tr>
-            <td width="80">金额</td>
-            <td></td>
+            <td width="100">到账银行卡</td>
+            <td style="padding:0"><input name="id_card" value="{{ session('wechatDb.id_card') }}" type="number"
+                                         class="form-control"/></td>
+        </tr>
+        {{--<tr>--}}
+        {{--<td>手续费</td>--}}
+        {{--<td></td>--}}
+        {{--</tr>--}}
+        <tr>
+            <td>提现金额</td>
+            <td style="padding:0"><input name="price" type="number" class="form-control"/></td>
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-success btn-flat btn-full">提现</button>
+    <button class="btn btn-success btn-flat btn-full" id="apply">提现</button>
 </div>
 </body>
 @include('wechat.bottom-nav')
 <script>
-
+    $("#apply").click(function () {
+        var param = $(".form-control").serialize();
+        $.post('/user/sum-cash', param, function (data) {
+            layer.msg(data.msg);
+        });
+    })
 </script>
 </html>

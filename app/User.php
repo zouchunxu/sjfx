@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function incrementIntegral($incr = 1)
     {
-        return $this->increment('integral',$incr);
+        return $this->increment('integral', $incr);
     }
 
 
@@ -94,4 +94,20 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasOne(self::class, 'uid', 'super');
     }
+
+    public static function getLevelName($uid)
+    {
+        $user = self::find($uid);
+        $myLevel = $user->level;
+        $conf = config('userlevel');
+        $keys = array_keys($conf);
+        rsort($keys);
+        foreach ($keys as $key) {
+            if($key <= $myLevel) {
+                return strval($conf[$key]);
+            }
+        }
+        return head($conf);
+    }
+
 }

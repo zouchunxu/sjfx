@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Wechat;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApplyIntegralShop;
+use App\Models\Farmer;
 use App\Models\UserWithdraw;
 use App\User;
 use EasyWeChat\Foundation\Application;
@@ -12,8 +13,11 @@ class UserController extends Controller
 {
     public function anyIndex()
     {
+        $uid = session('wechatDb.uid');
         return view('wechat.user', [
-            'user' => User::query()->find(session('wechatDb.uid'))
+            'user' => User::query()->find($uid),
+            'levelName' => User::getLevelName($uid),
+            'count' => User::query()->count()
         ]);
     }
 
@@ -46,6 +50,11 @@ class UserController extends Controller
         ]);
     }
 
+    public function anyFriends()
+    {
+        return view('wechat.friends');
+    }
+
 
     public function anyUserInfo()
     {
@@ -65,16 +74,24 @@ class UserController extends Controller
     {
         if ($request->isMethod('post')) {
             $user = User::find(session('wechatDb.uid'));
-
+            if ($request->input('price') < 50) {
+                return [
+                    'error' => 1,
+                    'msg' => '提现金额必须大于50！'
+                ];
+            }
             if ($user->real_gold < $request->input('price')) {
                 return [
                     'error' => 1,
                     'msg' => '金币余额不足！'
                 ];
             }
-            if (UserWithdraw::create(array_merge($request->except('_token'),[
+            $user->real_gold -= $request->input('price');
+            $user->save();
+            if (UserWithdraw::create(array_merge($request->except('_token'), [
                 'uid' => session('wechatDb.uid')
-            ]))) {
+            ]))
+            ) {
                 return [
                     'error' => 0,
                     'msg' => '申请提现成功！'
@@ -91,6 +108,15 @@ class UserController extends Controller
         return view('wechat.cash');
     }
 
+    public function anyFarmer(Request $request)
+    {
+        return view('wechat.farmer')->with([
+            'farmer' => Farmer::query()->with('ware')->where(
+                'uid', session('wechatDb.uid'))->where('status', 0)->get()
+        ]);
+    }
+
+
     public function anyConvertList()
     {
         return view('wechat.convert-list')->with([
@@ -105,8 +131,40 @@ class UserController extends Controller
         return view('wechat.score');
     }
 
-    public function anySumCash()
+    public function anySumCash(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $user = User::find(session('wechatDb.uid'));
+            if ($request->input('price') < 50) {
+                return [
+                    'error' => 1,
+                    'msg' => '提现金额必须大于50！'
+                ];
+            }
+            if ($user->welfare < $request->input('price')) {
+                return [
+                    'error' => 1,
+                    'msg' => '福利不足！'
+                ];
+            }
+            $user->welfare -= $request->input('price');
+            $user->save();
+            if (UserWithdraw::create(array_merge($request->except('_token'), [
+                'uid' => session('wechatDb.uid')
+            ]))
+            ) {
+                return [
+                    'error' => 0,
+                    'msg' => '申请提现成功！'
+                ];
+            } else {
+                return [
+                    'error' => 1,
+                    'msg' => '申请提现失败！'
+                ];
+            }
+
+        }
         return view('wechat.sum-cash');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Common\Buy;
 
+use App\Models\Extend;
 use DB;
 use App\Models\MyGood;
 
@@ -16,6 +17,15 @@ class Normally extends BuyClass
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
+        $defaultCount = 9;
+        $goodCount = MyGood::query()->where(['uid' => $this->user->uid])->count();
+        $buyCount = Extend::query()->where(['uid' => $this->user->uid])->first()->value('count');
+        $sum = $defaultCount + $buyCount;
+
+        if ($sum <= $goodCount) {
+            throw new BuyException('土地不足，请扩充更多的土地');
+        }
+
         try {
             DB::beginTransaction();
             MyGood::create([
@@ -25,6 +35,8 @@ class Normally extends BuyClass
             ]);
             $this->user->incrementIntegral($price);
             $this->user->deductGold($price);
+            $this->user->level += 1;
+            $this->user->save();
             DB::commit();
         } catch (\Exception $e) {
             throw $e;

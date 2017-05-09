@@ -15,9 +15,9 @@
 		<img src="/assets/img/my-manor.jpg" alt="manor" style="width: 100%;height: 100%"/>
 
 		<div class="custom-map">
+			<a href="/good/my-goods?cid=7"></a>
+			<a href="/good/my-goods?cid=8"></a>
 			<a href="/good/my-goods?cid=1"></a>
-			<a href="/good/my-goods?cid=2"></a>
-			<a href="/good/my-goods?cid=3"></a>
 			<a href="/good/my-goods?cid=4"></a>
 		</div>
 	</div>

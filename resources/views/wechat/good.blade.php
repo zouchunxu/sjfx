@@ -9,7 +9,7 @@
 <body>
 <div class="shop">
     <div class="coupon-ad">
-        <img src="" alt=""/>
+        <img src="/assets/img/ppt.jpeg" alt=""/>
     </div>
 
     <div class="tabset mt-5">

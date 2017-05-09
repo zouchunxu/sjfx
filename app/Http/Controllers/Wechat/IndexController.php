@@ -14,7 +14,12 @@ class IndexController extends Controller
     public function getIndex()
     {
         return view('wechat.index')->with([
-            'lists' => Ware::getWares(1)
+            'lists' => array_merge(
+                Ware::getWares(1),
+                Ware::getWares(4),
+                Ware::getWares(5),
+                Ware::getWares(2)
+            )
         ]);
     }
 

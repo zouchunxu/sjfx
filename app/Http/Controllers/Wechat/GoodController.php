@@ -20,6 +20,15 @@ class GoodController extends Controller
         ]);
     }
 
+    public function anyList(Request $request)
+    {
+        $category = $request->input('cid');
+        return view('wechat.list')->with([
+            'lists' => Ware::query()->where(['category_id'=>$category])->get()
+        ]);
+    }
+
+
     public function anyMyGoods(Request $request)
     {
         $uid = session('wechatDb.uid');
@@ -49,7 +58,7 @@ class GoodController extends Controller
         try {
             $id = $request->input('id');
             $uid = session('wechatDb.uid');
-            MyGood::reward($uid,$id);
+            MyGood::reward($uid, $id);
         } catch (\Exception $e) {
             return [
                 'error' => 1,

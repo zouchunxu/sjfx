@@ -2,7 +2,6 @@
 <head>
     <title>用户信息</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/assets/wechat/base.css">
     <link rel="stylesheet" href="/assets/wechat/good.css">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     @include('wechat.base')

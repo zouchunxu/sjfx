@@ -18,7 +18,8 @@ class WareController extends Controller
                 $fileName = md5(microtime()) . ".{$extension}";
                 $dirName = 'upload/' . date('Ymd');
                 if (!is_dir($dirName)) {
-                    mkdir($dirName, 777);
+                    mkdir($dirName);
+                    chown($dirName,'www');
                 }
                 $request->file('logo')->move($dirName, $fileName);
                 $imgFile = $dirName . '/' . $fileName;
@@ -31,7 +32,10 @@ class WareController extends Controller
                 'trait' => json_encode($traits)
             ]);
             Ware::create($data);
-//            compressedImage($imgFile,0.6);
+            if ($imgFile) {
+                compressedImage($imgFile,0.6);
+            }
+
             return response()->json($return);
         }
 
@@ -71,7 +75,8 @@ class WareController extends Controller
                 $fileName = md5(microtime()) . ".{$extension}";
                 $dirName = 'upload/' . date('Ymd');
                 if (!is_dir($dirName)) {
-                    mkdir($dirName, 777);
+                    mkdir($dirName);
+                    chown($dirName,'www');
                 }
                 $request->file('logo')->move($dirName, $fileName);
                 $imgFile = $dirName . '/' . $fileName;
@@ -84,6 +89,7 @@ class WareController extends Controller
             ]);
             if(!empty($imgFile)){
                 $data['logo'] = $imgFile;
+                compressedImage($imgFile,0.6);
             }
 
 

@@ -190,7 +190,7 @@
 }
 
 .nav .nav-item {
-    margin: 0 2%;
+    margin: 0 6%;
     height: inherit;
     width: 21%;
     float: left;
@@ -205,6 +205,9 @@
     overflow: hidden;
     background: #fff;
 }
+.nav .nav-item .icon img{
+    width: 100%;
+}
 
 .nav .nav-item .title {
     height: 20%;
@@ -217,7 +220,7 @@
 }
 
 .ad {
-    background: url("../img/unslider/sunset.jpg");
+    background: url("../img/ad.jpeg");
     height: 120px;
     background-size: 100% 100%;
 }
@@ -273,7 +276,10 @@
     margin-top:-2%;
     border-radius: 10px;
 }
-
+.nav a{
+    text-underline: none;
+    color: #000;
+}
 
 
 
