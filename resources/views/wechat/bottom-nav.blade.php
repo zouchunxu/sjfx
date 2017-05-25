@@ -52,11 +52,11 @@
 
         var wechatCurrentUrl = window.location.pathname;
 
-        $('.bottom-nav a').each(function () {
-            if (typeof $(this).attr('href') == 'string' && $(this).attr('href').match(wechatCurrentUrl)) {
-                $(this).find('.nav-item').addClass('active');
-            }
-        });
+//        $('.bottom-nav a').each(function () {
+//            if (typeof $(this).attr('href') == 'string' && $(this).attr('href').match(wechatCurrentUrl)) {
+//                $(this).find('.nav-item').addClass('active');
+//            }
+//        });
 
     });
 </script>

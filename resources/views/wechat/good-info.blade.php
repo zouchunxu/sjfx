@@ -2,10 +2,9 @@
 <head>
     <title>商品详情</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/assets/wechat/base.css">
+    @include('wechat.base')
     <link rel="stylesheet" href="/assets/wechat/good.css">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    @include('wechat.base')
     <style>
         .good-img img {
             width: 100%;

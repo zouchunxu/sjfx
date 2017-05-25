@@ -52,7 +52,27 @@ class UserController extends Controller
 
     public function anyFriends()
     {
-        return view('wechat.friends');
+        $uid = session('wechatDb.uid');
+        $user = User::query()->with('lowLevelUser.lowLevelUser','superInfo')->find($uid)->toArray();
+
+        foreach ($user['low_level_user'] as $datum) {
+            //一级
+            $user['one'][] = $datum;
+            foreach ($datum['low_level_user'] as $item) {
+                //二级
+                $user['tow'][] = $item;
+            }
+        }
+
+        $uids = array_column((array)array_get($user,'two'),'uid');
+
+        $threeUser = (array)User::query()->where('uid','in',$uids)->get()->toArray();
+        if($threeUser){
+            $user['three'] = $threeUser;
+        }
+
+
+        return view('wechat.friends', compact('user'));
     }
 
 

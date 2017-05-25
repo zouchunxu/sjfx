@@ -72,12 +72,14 @@
                 <div>我的二维码</div>
             </div>
         </a>
+        <a href="/user/friends">
         <div class="col-4">
             <div class="tool-img">
                 <img src="/assets/img/fireds.jpeg" alt=""/>
             </div>
             <div>我的好友</div>
         </div>
+        </a>
         <a href="/user/cash">
             <div class="col-4">
                 <div class="tool-img">

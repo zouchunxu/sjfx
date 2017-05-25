@@ -103,11 +103,16 @@ class User extends Model implements AuthenticatableContract,
         $keys = array_keys($conf);
         rsort($keys);
         foreach ($keys as $key) {
-            if($key <= $myLevel) {
+            if ($key <= $myLevel) {
                 return strval($conf[$key]);
             }
         }
         return head($conf);
+    }
+
+    public function lowLevelUser()
+    {
+        return $this->hasMany('App\User','super','uid');
     }
 
 }

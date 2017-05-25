@@ -22,21 +22,24 @@ class AutoRewardMiddleware
             'uid' => $uid,
             'status' => 0
         ])->first();
-        $expired = strtotime("{$farmer->created_at} +{$farmer->expired} hour");
-        if ($expired < time()) {
-            $farmer->status = 1;
-            $farmer->save();
-        } else {
-            $ids = MyGood::query()->lists('id');
-            foreach ($ids as $id) {
-                try{
+        if (is_object($farmer)) {
+            $expired = strtotime("{$farmer->created_at} +{$farmer->expired} hour");
+            if ($expired < time()) {
+                $farmer->status = 1;
+                $farmer->save();
+            } else {
+                $ids = MyGood::query()->lists('id');
+                foreach ($ids as $id) {
+                    try {
 
-                    MyGood::reward($uid,$id);
-                }catch(\Exception $exception){
+                        MyGood::reward($uid, $id);
+                    } catch (\Exception $exception) {
 
+                    }
                 }
             }
         }
+
         return $next($request);
     }
 }
