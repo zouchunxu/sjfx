@@ -33,6 +33,7 @@ EfMhAho2He0wH3ctVY1FruRD9QMpJlEBtF4EBNVhpJA=
     public function qrcode($data)
     {
         $merchant_code = $this->merchant_code;//商户号，1111110166是测试商户号，调试时要更换商家自己的商户号
+        $merchant_code = '1111110166';//商户号，1111110166是测试商户号，调试时要更换商家自己的商户号
 
         $service_type = 'weixin_scan';//微信：weixin_scan 支付宝：alipay_scan
 
@@ -102,6 +103,22 @@ EfMhAho2He0wH3ctVY1FruRD9QMpJlEBtF4EBNVhpJA=
 
         $signStr = $signStr . "service_type=" . $service_type;
 
+        $this->merchant_private_key='-----BEGIN PRIVATE KEY-----
+MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBALf/+xHa1fDTCsLY
+PJLHy80aWq3djuV1T34sEsjp7UpLmV9zmOVMYXsoFNKQIcEzei4QdaqnVknzmIl7
+n1oXmAgHaSUF3qHjCttscDZcTWyrbXKSNr8arHv8hGJrfNB/Ea/+oSTIY7H5cAtW
+g6VmoPCHvqjafW8/UP60PdqYewrtAgMBAAECgYEAofXhsyK0RKoPg9jA4NabLuuu
+u/IU8ScklMQIuO8oHsiStXFUOSnVeImcYofaHmzIdDmqyU9IZgnUz9eQOcYg3Bot
+UdUPcGgoqAqDVtmftqjmldP6F6urFpXBazqBrrfJVIgLyNw4PGK6/EmdQxBEtqqg
+XppRv/ZVZzZPkwObEuECQQDenAam9eAuJYveHtAthkusutsVG5E3gJiXhRhoAqiS
+QC9mXLTgaWV7zJyA5zYPMvh6IviX/7H+Bqp14lT9wctFAkEA05ljSYShWTCFThtJ
+xJ2d8zq6xCjBgETAdhiH85O/VrdKpwITV/6psByUKp42IdqMJwOaBgnnct8iDK/T
+AJLniQJABdo+RodyVGRCUB2pRXkhZjInbl+iKr5jxKAIKzveqLGtTViknL3IoD+Z
+4b2yayXg6H0g4gYj7NTKCH1h1KYSrQJBALbgbcg/YbeU0NF1kibk1ns9+ebJFpvG
+T9SBVRZ2TjsjBNkcWR2HEp8LxB6lSEGwActCOJ8Zdjh4kpQGbcWkMYkCQAXBTFiy
+yImO+sfCccVuDSsWS+9jrc5KadHGIvhfoRjIj2VuUKzJ+mXbmXuXnOYmsAefjnMC
+I6gGtaqkzl527tw=
+-----END PRIVATE KEY-----';
         $merchant_private_key = openssl_get_privatekey($this->merchant_private_key);
 
         openssl_sign($signStr, $sign_info, $merchant_private_key, OPENSSL_ALGO_MD5);

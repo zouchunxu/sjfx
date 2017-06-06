@@ -17,7 +17,7 @@ class TestController extends Controller
 
 
         var_dump($pay->qrcode([
-            'notify_url' => 'taltic.com',
+            'notify_url' => 'www.taltic.com/test/demo',
             'interface_version' => 'V3.1',
             'client_ip' => $request->getClientIp(),
             'sign_type' => 'RSA-S',
@@ -34,9 +34,102 @@ class TestController extends Controller
     }
 
 
-    public function anyDemo()
+    public function anyDemo(Request $request)
     {
+        $data = $request->input();
 
+        file_put_contents('/test.log',json_encode($data));
+        $merchant_code	= $data["merchant_code"];
+
+        $interface_version = $data["interface_version"];
+
+        $sign_type = $data["sign_type"];
+
+        $dinpaySign = base64_decode($data["sign"]);
+
+        $notify_type = $data["notify_type"];
+
+        $notify_id = $data["notify_id"];
+
+        $order_no = $data["order_no"];
+
+        $order_time = $data["order_time"];
+
+        $order_amount = $data["order_amount"];
+
+        $trade_status = $data["trade_status"];
+
+        $trade_time = $data["trade_time"];
+
+        $trade_no = $data["trade_no"];
+
+        $bank_seq_no = $data["bank_seq_no"];
+
+        $extra_return_param = $data["extra_return_param"];
+
+
+/////////////////////////////   参数组装  /////////////////////////////////
+        /**
+        除了sign_type dinpaySign参数，其他非空参数都要参与组装，组装顺序是按照a~z的顺序，下划线"_"优先于字母
+         */
+
+
+        $signStr = "";
+
+        if($bank_seq_no != ""){
+            $signStr = $signStr."bank_seq_no=".$bank_seq_no."&";
+        }
+
+        if($extra_return_param != ""){
+            $signStr = $signStr."extra_return_param=".$extra_return_param."&";
+        }
+
+        $signStr = $signStr."interface_version=".$interface_version."&";
+
+        $signStr = $signStr."merchant_code=".$merchant_code."&";
+
+        $signStr = $signStr."notify_id=".$notify_id."&";
+
+        $signStr = $signStr."notify_type=".$notify_type."&";
+
+        $signStr = $signStr."order_amount=".$order_amount."&";
+
+        $signStr = $signStr."order_no=".$order_no."&";
+
+        $signStr = $signStr."order_time=".$order_time."&";
+
+        $signStr = $signStr."trade_no=".$trade_no."&";
+
+        $signStr = $signStr."trade_status=".$trade_status."&";
+
+        $signStr = $signStr."trade_time=".$trade_time;
+
+        //echo $signStr;
+
+/////////////////////////////   RSA-S验证  /////////////////////////////////
+
+        $dinpay_public_key = '-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJQIEXUkjG2RoyCnfucMX1at7O
+PtOCDSiKZhtzHw5HOjXKteBpYBqEBOZc9pNjP/fKbvBNZ3Z7XxUn5ECfQbPCtH9y
+++c0WxAYPoZiPDEYeQmRJfqPR68c0aAtZN5Kh7H1SI2ZRvoMUdZGvvFy3vuPnTwm
+3R+aHq17bch/0ZAudwIDAQAB 
+-----END PUBLIC KEY-----';
+        $dinpay_public_key = openssl_get_publickey($dinpay_public_key);
+
+        $flag = openssl_verify($signStr,$dinpaySign,$dinpay_public_key,OPENSSL_ALGO_MD5);
+
+
+///////////////////////////   响应“SUCCESS” /////////////////////////////
+
+
+        if($flag){
+
+            echo"SUCCESS";
+
+        }else{
+
+            echo"Verification Error";
+        }
     }
 
 }
