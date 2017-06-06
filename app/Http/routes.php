@@ -16,6 +16,7 @@ Route::any('/', function () {
 });
 
 Route::controller('config', 'ConfigController');
+Route::controller('test', 'TestController');
 
 
 Route::any('/qrcode-img', 'WechatController@qrcodeImg');

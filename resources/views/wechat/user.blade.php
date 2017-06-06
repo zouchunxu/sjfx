@@ -118,12 +118,12 @@
             </div>
             <div>分佣中心</div>
         </div>
-        <a href="/user/farmer">
+        <a href="/user/recharge">
             <div class="col-4">
                 <div class="tool-img">
                     <img src="/assets/img/farmer.jpeg" alt=""/>
                 </div>
-                <div>我的管家</div>
+                <div>金币充值</div>
             </div>
         </a>
     </div>

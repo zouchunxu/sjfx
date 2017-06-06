@@ -3,7 +3,9 @@ namespace App\Http\Controllers\Wechat;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApplyIntegralShop;
+use App\Models\Extend;
 use App\Models\Farmer;
+use App\Models\MyGood;
 use App\Models\UserWithdraw;
 use App\User;
 use EasyWeChat\Foundation\Application;
@@ -78,7 +80,8 @@ class UserController extends Controller
 
     public function anyUserInfo()
     {
-        return view('wechat.user-info');
+        $uid = session('wechatDb.uid');
+        return view('wechat.user-info')->with(['goodCount' =>  $buyCount = Extend::query()->where(['uid' => $uid])->first()->value('count')+50]);
     }
 
     public function anyCashList()
@@ -128,9 +131,9 @@ class UserController extends Controller
         return view('wechat.cash');
     }
 
-    public function anyFarmer(Request $request)
+    public function anyRecharge(Request $request)
     {
-        return view('wechat.farmer')->with([
+        return view('wechat.recharge')->with([
             'farmer' => Farmer::query()->with('ware')->where(
                 'uid', session('wechatDb.uid'))->where('status', 0)->get()
         ]);

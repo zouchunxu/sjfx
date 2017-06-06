@@ -35,6 +35,10 @@
                 <td width="90">详细地址</td>
                 <td style="padding:0"><input name="full_address" value="{{ session('wechatDb.full_address') }}" type="text" class="form-control"/></td>
             </tr>
+            <tr>
+                <td width="90">土地</td>
+                <td style="padding:0"><input disabled name="full_address" value="{{ $goodCount }}" type="text" class="form-control"/></td>
+            </tr>
             </tbody>
         </table>
         <div>
