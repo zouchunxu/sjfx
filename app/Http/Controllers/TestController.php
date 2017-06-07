@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Pay\Pay2;
 use App\Common\Pay\Pay1;
 use App\Models\UserMapLog;
 use Illuminate\Http\Request;
@@ -17,6 +18,28 @@ class TestController extends Controller
 
 
         var_dump($pay->qrcode([
+            'notify_url' => 'http://www.taltic.com/test/demo',
+            'interface_version' => 'V3.1',
+            'client_ip' => $request->getClientIp(),
+            'sign_type' => 'RSA-S',
+            'order_no' => time(),
+            'order_time' => date('Y-m-d H:i:s'),
+            'order_amount' => 0.1,
+            'product_name' => 'test',
+            'product_code' => '123',
+            'product_num' => '1',
+            'product_desc' => 'test',
+            'extra_return_param' => 'cesh',
+            'extend_param' => ''
+        ]));
+    }
+
+    public function anyTest2(Request $request)
+    {
+        $pay = new Pay2();
+
+
+        return view('test.test')->with($pay->qrcode([
             'notify_url' => 'http://www.taltic.com/test/demo',
             'interface_version' => 'V3.1',
             'client_ip' => $request->getClientIp(),
