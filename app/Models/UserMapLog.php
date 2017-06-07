@@ -12,7 +12,7 @@ class UserMapLog extends Model
     public static function getSuperUid($openId)
     {
         $user = self::query()->where('open_id',$openId)->first(['uid']);
-        return array_get($user,'uid');
+        return intval(array_get($user,'uid'));
     }
 
 }
