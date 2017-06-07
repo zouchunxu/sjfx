@@ -81,7 +81,9 @@ class UserController extends Controller
     public function anyUserInfo()
     {
         $uid = session('wechatDb.uid');
-        return view('wechat.user-info')->with(['goodCount' =>  $buyCount = Extend::query()->where(['uid' => $uid])->first()->value('count')+50]);
+        $extend = Extend::query()->where(['uid' => $uid])->first();
+        $count = intval(array_get($extend,'count'));
+        return view('wechat.user-info')->with(['goodCount' => $count + 50]);
     }
 
     public function anyCashList()
