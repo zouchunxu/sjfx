@@ -35,7 +35,7 @@ class TradeCreate extends Command
 
         while (true) {
             $data = $redis->brPop('trade', 30);
-            if ($data[1]) {
+            if (array_get($data,1)) {
                 $val = json_decode($data[1], true);
                 var_export($val);
                 $trade = new Trade();
