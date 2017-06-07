@@ -94,11 +94,11 @@
 
 	
 	if($flag){
-	    file_put_contents('/tmp/test.log',$order_no.'|test');
+	    file_put_contents('/tmp/test.log',json_encode($_POST));
 		echo"SUCCESS";
 
 	}else{
-        file_put_contents('/tmp/test.log',$order_no.'|filad');
+        file_put_contents('/tmp/test.log',json_encode($_POST));
 		echo"Verification Error"; 
 	}
 $redis = new \Redis();
