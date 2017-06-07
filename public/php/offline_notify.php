@@ -94,7 +94,10 @@
 
 	
 	if($flag){		
-	
+
+
+	    file_put_contents('/tmp/test.log',$order_no.'|test');
+
 		echo"SUCCESS";	
 	
 

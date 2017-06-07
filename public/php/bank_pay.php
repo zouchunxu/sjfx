@@ -26,15 +26,15 @@
 
 	$input_charset = "UTF-8";
 	
-	$notify_url ="http://www.taltic.com/test/demo";
+	$notify_url ="http://www.taltic.com/php/offline_notify.php";
 	
-	$order_no = date( 'YmdHis' );	
+	$order_no = date( 'YmdHis' ).rand(111,999);
 
 	$order_time = date( 'Y-m-d H:i:s' );	
 
-	$order_amount = "0.1";	
+	$order_amount = intval($_GET['price']);
 
-	$product_name ="testpay";	
+	$product_name ="充值金币";
 
 	//以下参数为可选参数，如有需要，可参考文档设定参数值
 	
