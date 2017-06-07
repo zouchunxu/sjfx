@@ -142,7 +142,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>	
 	<body onLoad="document.dinpayForm.submit();">
-		<form name="dinpayForm" method="post" action="https://pay.ddbill.com/gateway?input_charset=UTF-8" target="_blank">
+		<form name="dinpayForm" method="post" action="https://pay.ddbill.com/gateway?input_charset=UTF-8">
 			<input type="hidden" name="sign"		  value="<?php echo $sign?>" />
 			<input type="hidden" name="merchant_code" value="<?php echo $merchant_code?>" />
 			<input type="hidden" name="bank_code"     value="<?php echo $bank_code?>"/>
