@@ -41,7 +41,7 @@ class TestController extends Controller
 
         return view('test.test')->with($pay->qrcode([
             'notify_url' => 'http://www.taltic.com/test/demo',
-            'interface_version' => 'V3.1',
+            'interface_version' => 'V3.0',
             'client_ip' => $request->getClientIp(),
             'sign_type' => 'RSA-S',
             'order_no' => time(),

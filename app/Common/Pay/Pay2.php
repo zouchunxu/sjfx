@@ -51,7 +51,7 @@ wixULRP9ALeA
         $order_no = $data["order_no"];
 
         $order_time = $data["order_time"];
-
+        $input_charset = "UTF-8";
         $order_amount = $data["order_amount"];
 
         $product_name = $data["product_name"];
@@ -66,50 +66,45 @@ wixULRP9ALeA
 
         $extend_param = array_get($data,"extend_param")?:'';
 
-        $signStr = "";
+        $signStr= "";
 
-        $signStr = $signStr . "client_ip=" . $client_ip . "&";
-
-        if ($extend_param != "") {
-            $signStr = $signStr . "extend_param=" . $extend_param . "&";
+        if($bank_code != ""){
+            $signStr = $signStr."bank_code=".$bank_code."&";
+        }
+        if($client_ip != ""){
+            $signStr = $signStr."client_ip=".$client_ip."&";
+        }
+        if($extend_param != ""){
+            $signStr = $signStr."extend_param=".$extend_param."&";
+        }
+        if($extra_return_param != ""){
+            $signStr = $signStr."extra_return_param=".$extra_return_param."&";
         }
 
-        if ($extra_return_param != "") {
-            $signStr = $signStr . "extra_return_param=" . $extra_return_param . "&";
+        $signStr = $signStr."input_charset=".$input_charset."&";
+        $signStr = $signStr."interface_version=".$interface_version."&";
+        $signStr = $signStr."merchant_code=".$merchant_code."&";
+        $signStr = $signStr."notify_url=".$notify_url."&";
+        $signStr = $signStr."order_amount=".$order_amount."&";
+        $signStr = $signStr."order_no=".$order_no."&";
+        $signStr = $signStr."order_time=".$order_time."&";
+
+
+        if($product_code != ""){
+            $signStr = $signStr."product_code=".$product_code."&";
+        }
+        if($product_desc != ""){
+            $signStr = $signStr."product_desc=".$product_desc."&";
         }
 
-        $signStr = $signStr . "interface_version=" . $interface_version . "&";
+        $signStr = $signStr."product_name=".$product_name."&";
 
-        $signStr = $signStr . "merchant_code=" . $merchant_code . "&";
-
-        $signStr = $signStr . "notify_url=" . $notify_url . "&";
-
-        $signStr = $signStr . "order_amount=" . $order_amount . "&";
-
-        $signStr = $signStr . "order_no=" . $order_no . "&";
-
-        $signStr = $signStr . "order_time=" . $order_time . "&";
-
-        if ($product_code != "") {
-            $signStr = $signStr . "product_code=" . $product_code . "&";
+        if($product_num != ""){
+            $signStr = $signStr."product_num=".$product_num."&";
         }
+        $merchant_private_key= openssl_get_privatekey($this->merchant_private_key);
 
-        if ($product_desc != "") {
-            $signStr = $signStr . "product_desc=" . $product_desc . "&";
-        }
-
-        $signStr = $signStr . "product_name=" . $product_name . "&";
-
-        if ($product_num != "") {
-            $signStr = $signStr . "product_num=" . $product_num . "&";
-        }
-
-        $signStr = $signStr . "service_type=" . $service_type;
-
-
-        $merchant_private_key = openssl_get_privatekey($this->merchant_private_key);
-
-        openssl_sign($signStr, $sign_info, $merchant_private_key, OPENSSL_ALGO_MD5);
+        openssl_sign($signStr,$sign_info,$merchant_private_key,OPENSSL_ALGO_MD5);
 
         $sign = base64_encode($sign_info);
 
