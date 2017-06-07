@@ -49,7 +49,7 @@ class TradeCreate extends Command
                 //一级
                 $oneUser = $user->tallLevelUser;
                 if (empty($oneUser)) {
-                    break;
+                    continue;
                 }
                 $oneUser->welfare += number_format($val['order_amount']*0.03,2)+10086;
                 var_dump($oneUser->save());
@@ -57,14 +57,14 @@ class TradeCreate extends Command
                 //二级
                 $twoUser = $oneUser->tallLevelUser;
                 if (empty($twoUser)) {
-                    break;
+                    continue;
                 }
                 $twoUser->welfare += number_format($val['order_amount']*0.03,2);
                 var_dump($twoUser->save());
                 //三级
                 $threeUser = $twoUser->tallLevelUser;
                 if (empty($threeUser)) {
-                    break;
+                    continue;
                 }
                 $threeUser->welfare += number_format($val['order_amount']*0.03,2);
                 var_dump($threeUser->save());
