@@ -17,7 +17,7 @@ class TestController extends Controller
 
 
         var_dump($pay->qrcode([
-            'notify_url' => 'www.taltic.com/test/demo',
+            'notify_url' => 'http://www.taltic.com/test/demo',
             'interface_version' => 'V3.1',
             'client_ip' => $request->getClientIp(),
             'sign_type' => 'RSA-S',
@@ -38,7 +38,7 @@ class TestController extends Controller
     {
         $data = $request->input();
 
-        file_put_contents('/test.log',json_encode($data));
+        file_put_contents('/test.log',json_encode($data).'a');
         $merchant_code	= $data["merchant_code"];
 
         $interface_version = $data["interface_version"];
