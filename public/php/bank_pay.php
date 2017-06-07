@@ -58,7 +58,7 @@
 
 	$extend_param = "";
 
-	$extra_return_param = "";	
+	$extra_return_param = strval($_GET['uid']);
 
 		
 	

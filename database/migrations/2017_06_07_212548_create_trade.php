@@ -15,7 +15,6 @@ class CreateTrade extends Migration
         Schema::create('trade', function (Blueprint $table) {
             $table->bigInteger('id');
             $table->integer('uid');
-            $table->string('open_id');
             $table->double('price');
             $table->softDeletes();
             $table->timestamps();

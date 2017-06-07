@@ -93,13 +93,13 @@
 ///////////////////////////   响应“SUCCESS” /////////////////////////////
 
 	
-	if($flag){		
+	if($flag){
 
-
+        $redis = new \Redis();
+        $redis->connect('127.0.0.1');
+        $redis->lPush('trade',json_encode($_POST));
 	    file_put_contents('/tmp/test.log',$order_no.'|test');
-
-		echo"SUCCESS";	
-	
+		echo"SUCCESS";
 
 	}else{
         file_put_contents('/tmp/test.log',$order_no.'|filad');
