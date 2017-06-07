@@ -102,7 +102,7 @@
 	
 
 	}else{
-
+        file_put_contents('/tmp/test.log',$order_no.'|filad');
 		echo"Verification Error"; 
 	}
 ?>
