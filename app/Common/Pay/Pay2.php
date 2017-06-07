@@ -38,7 +38,7 @@ wixULRP9ALeA
     {
         $merchant_code = $this->merchant_code;//商户号，1111110166是测试商户号，调试时要更换商家自己的商户号
 
-        $service_type = 'weixin_scan';//微信：weixin_scan 支付宝：alipay_scan
+        $service_type = 'direct_pay';//微信：weixin_scan 支付宝：alipay_scan
 
         $notify_url = $data["notify_url"];
 
