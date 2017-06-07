@@ -43,7 +43,7 @@ class WechatController extends Controller
 
             }
 
-            return 'http://sjfx.zcx521.com/index';
+            return 'http://www.taltic.com//index';
         });
 
         Log::info('return response.');
