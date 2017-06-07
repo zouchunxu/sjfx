@@ -38,7 +38,7 @@ wcV/dMV/7DSHZPShCmVaMi1uaDSjYruFV5I4C9ytg7GmdckI1cJq/bHXYDQ6c8u2
 2)demo提供的ddbill_public_key是测试商户号1111110166的智付公钥，请自行复制对应商户号的智付公钥进行调整和替换。
 3）使用多的宝公钥验证时需要调用openssl_verify函数进行验证,需要在php_ini文件里打开php_openssl插件
 */
-	$ddbill_public_key = '-----BEGIN PUBLIC KEY-----
+$dinpay_public_key = '-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnC6g3zYYoxFqRl/GseRLmN/8XLNwk+yvXUU4Ft0GCM3pL7pQ49VW4E5Z7aqZial1hGCGokQ6UVs1AL0mc4H1f0SfGuLVxlPPVnQDuWjv2BRDUy/7BxQuZ3LN4pxn6YgEqr/DPELmSKCuffeoBab9dJjrDH002fnPfuv5J1fdNrQIDAQAB
 -----END PUBLIC KEY-----';
 
