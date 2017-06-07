@@ -32,7 +32,7 @@
 
 	$order_time = date( 'Y-m-d H:i:s' );	
 
-	$order_amount = intval($_GET['price']);
+	$order_amount = floatval($_GET['price']);
 
 	$product_name ="充值金币";
 
