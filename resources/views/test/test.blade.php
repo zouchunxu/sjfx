@@ -8,6 +8,7 @@
     <input type="hidden" name="sign" value="{{ isset($sign)?$sign:''   }}>"/>
     <input type="hidden" name="merchant_code" value="{{ isset($merchant_code)?$merchant_code:''  }}"/>
     <input type="hidden" name="order_no" value="{{ isset($order_no)?$order_no:''  }}"/>
+    <input type="hidden" name="bank_code" value="{{ isset($bank_code)?$bank_code:''  }}"/>
     <input type="hidden" name="order_amount" value="{{ isset($order_amount)?$order_amount:''  }}"/>
     <input type="hidden" name="service_type" value="{{ isset($service_type)?$service_type:''  }}"/>
     <input type="hidden" name="input_charset" value="{{ isset($input_charset)?$input_charset:''  }}"/>
