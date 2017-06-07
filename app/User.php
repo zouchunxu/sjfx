@@ -117,7 +117,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function tallLevelUser()
     {
-        return $this->hasMany('App\User','uid','super');
+        return $this->hasOne('App\User','uid','super');
     }
 
 }
