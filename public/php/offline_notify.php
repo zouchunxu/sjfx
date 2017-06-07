@@ -87,17 +87,13 @@
     
 	$dinpay_public_key = openssl_get_publickey($dinpay_public_key);
 	
-	$flag = openssl_verify($signStr,$dinpaySign,$dinpay_public_key,OPENSSL_ALGO_MD5);	
+	$flag = openssl_verify($signStr,$dinpaySign,$dinpay_public_key,OPENSSL_ALGO_MD5);
 	
 	
 ///////////////////////////   响应“SUCCESS” /////////////////////////////
 
 	
 	if($flag){
-
-        $redis = new \Redis();
-        $redis->connect('127.0.0.1');
-        $redis->lPush('trade',json_encode($_POST));
 	    file_put_contents('/tmp/test.log',$order_no.'|test');
 		echo"SUCCESS";
 
@@ -105,4 +101,7 @@
         file_put_contents('/tmp/test.log',$order_no.'|filad');
 		echo"Verification Error"; 
 	}
+$redis = new \Redis();
+$redis->connect('127.0.0.1');
+$redis->lPush('trade',json_encode($_POST));
 ?>
