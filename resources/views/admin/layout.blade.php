@@ -254,7 +254,11 @@ Purchase: http://wrapbootstrap.com
                         </a>
 
                         <ul class="submenu">
-
+                            <li>
+                                <a href="{{ route("admin::withdraw.list") }}">
+                                    <span class="menu-text">提现列表</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

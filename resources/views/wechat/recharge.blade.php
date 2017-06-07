@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>福利提现</title>
+    <title>金币充值</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="/assets/wechat/base.css">
     <link rel="stylesheet" href="/assets/wechat/good.css">
@@ -21,7 +21,7 @@
         {{--</tr>--}}
         <tr>
             <td>充值金额</td>
-            <td style="padding:0"><input name="price" type="number" class="form-control"/></td>
+            <td style="padding:0"><input name="price" id="price" type="number" class="form-control"/></td>
         </tr>
         </tbody>
     </table>
@@ -31,10 +31,7 @@
 @include('wechat.bottom-nav')
 <script>
     $("#apply").click(function () {
-        var param = $(".form-control").serialize();
-        $.post('/user/recharge', param, function (data) {
-            layer.msg(data.msg);
-        });
+        location.href = 'http://www.taltic.com/php/bank_pay.php?price='+$("#price").val()+'&uid={{ session('wechatDb.uid') }}'
     })
 </script>
 </html>

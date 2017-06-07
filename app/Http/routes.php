@@ -59,5 +59,10 @@ Route::group(['as' => 'admin::', 'middleware' => 'admin'], function () {
 
     Route::post('/upload', ['as' => 'upload', 'uses' => 'Admin\CommonController@upload']);
 
+    Route::controller('withdraw','Admin\WithdrawController',[
+        'anyList' => 'withdraw.list',
+        'anyDel' => 'withdraw.del',
+        'anyApply' => 'withdraw.apply',
+    ]);
 
 });
