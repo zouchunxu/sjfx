@@ -109,10 +109,7 @@ class TestController extends Controller
 /////////////////////////////   RSA-S验证  /////////////////////////////////
 
         $dinpay_public_key = '-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJQIEXUkjG2RoyCnfucMX1at7O
-PtOCDSiKZhtzHw5HOjXKteBpYBqEBOZc9pNjP/fKbvBNZ3Z7XxUn5ECfQbPCtH9y
-++c0WxAYPoZiPDEYeQmRJfqPR68c0aAtZN5Kh7H1SI2ZRvoMUdZGvvFy3vuPnTwm
-3R+aHq17bch/0ZAudwIDAQAB 
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnC6g3zYYoxFqRl/GseRLmN/8XLNwk+yvXUU4Ft0GCM3pL7pQ49VW4E5Z7aqZial1hGCGokQ6UVs1AL0mc4H1f0SfGuLVxlPPVnQDuWjv2BRDUy/7BxQuZ3LN4pxn6YgEqr/DPELmSKCuffeoBab9dJjrDH002fnPfuv5J1fdNrQIDAQAB 
 -----END PUBLIC KEY-----';
         $dinpay_public_key = openssl_get_publickey($dinpay_public_key);
 
