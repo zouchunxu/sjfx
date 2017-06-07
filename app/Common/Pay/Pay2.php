@@ -122,7 +122,8 @@ wixULRP9ALeA
             'order_time' => $order_time,
             'order_amount' => $order_amount,
             'product_name' => $product_name,
-            'sign' =>$sign,
+            'input_charset' => $input_charset,
+            'sign' =>$sign
         ];
 
 
