@@ -68,9 +68,7 @@ wixULRP9ALeA
 
         $signStr= "";
 
-        if($bank_code != ""){
-            $signStr = $signStr."bank_code=".$bank_code."&";
-        }
+
         if($client_ip != ""){
             $signStr = $signStr."client_ip=".$client_ip."&";
         }
