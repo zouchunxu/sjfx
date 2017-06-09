@@ -12,7 +12,7 @@ class RedisHelp
     public function __construct()
     {
         $this->redis = new \Redis();
-        $this->redis->select(2);
+//        $this->redis->select(2);
         $this->redis->connect('127.0.0.1');
     }
 
