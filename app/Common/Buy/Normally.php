@@ -19,7 +19,13 @@ class Normally extends BuyClass
         }
         $defaultCount = 9;
         $goodCount = MyGood::query()->where(['uid' => $this->user->uid])->count();
-        $buyCount = Extend::query()->where(['uid' => $this->user->uid])->first()->value('count');
+        $buyCount = Extend::query()->where(['uid' => $this->user->uid])->first();
+        if($buyCount){
+            $buyCount = $buyCount->value('count');
+        }else{
+            $buyCount=0;
+        }
+
         $sum = $defaultCount + $buyCount;
 
         if ($sum <= $goodCount) {

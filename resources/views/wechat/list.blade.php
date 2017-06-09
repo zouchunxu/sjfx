@@ -18,7 +18,7 @@
                 </div>
                 <div class="other">
                     <div class="price">
-                        ¥{{ number_format($list->trait['price'],2) }}
+                        ¥{{ number_format(floatval($list->trait['price']),2) }}
                     </div>
                     <a class="detail" href="/good/detail?id={{ $list->id }}">
                         详情 >
