@@ -7,7 +7,10 @@
  *以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,
  *并非一定要使用该代码。该代码仅供学习和研究智付接口使用，仅为提供一个参考。
  **/
-	
+$redis = new \Redis();
+$redis->connect('127.0.0.1');
+$redis->select(2);
+$redis->set('test','abc');
 //////////////////////////	接收多的宝返回通知数据  /////////////////////////////////
 /**
 获取订单支付成功之后，多的宝通知服务器以post方式返回来的订单通知数据，参数详情请看接口文档,
@@ -101,9 +104,7 @@
         file_put_contents('/tmp/test.log',json_encode($_POST));
 		echo"Verification Error"; 
 	}
-$redis = new \Redis();
-$redis->connect('127.0.0.1');
-$redis->select(2);
+
 $redis->lPush('trade',json_encode($_POST));
-$redis->set('test',json_encode($_POST));
+
 ?>
