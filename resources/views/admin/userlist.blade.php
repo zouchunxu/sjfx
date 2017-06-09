@@ -23,9 +23,6 @@
                             会员名称
                         </th>
                         <th class="text-center">
-                            邮箱
-                        </th>
-                        <th class="text-center">
                             会员积分
                         </th>
                         <th class="text-center">
@@ -35,16 +32,16 @@
                             真实姓名
                         </th>
                         <th class="text-center">
-                            生日
+                            上级会员
                         </th>
                         <th class="text-center">
-                            身份证
-                        </th>
-                        <th class="text-center">
-                            QQ账号
+                            银行卡号
                         </th>
                         <th class="text-center">
                             手机号码
+                        </th>
+                        <th class="text-center">
+                            qq号码
                         </th>
                         <th class="text-center">
                             操作
@@ -93,18 +90,18 @@
         function setUserData(data, count) {
             var html = '';
             for (var i in data) {
+                console.log(data[i]);
                 html += '<tr class="text-center">';
                 html += '<td>' + (++count) + '</td>';
                 html += '<td>' + data[i].name + '</td>';
-                html += '<td>' + data[i].email + '</td>';
                 html += '<td>' + data[i].integral + '</td>';
                 html += '<td>' + data[i].nick_name + '</td>';
                 html += '<td>' + data[i].actual_name + '</td>';
-                html += '<td>' + data[i].birthday + '</td>';
+                html += '<td>' + (data[i].tall_level_user?data[i].tall_level_user.nick_name:'') + '</td>';
                 html += '<td>' + data[i].id_card + '</td>';
                 html += '<td>' + data[i].qq_code + '</td>';
                 html += '<td>' + data[i].phone + '</td>';
-                html += '<td><a onclick="updatehead(' + data[i].uid + ')" href="javascript:;">头像</a> / <a href="/useredit?id=' + data[i].uid + '">编辑</a> / <a href="javascript:;" onclick="del(' + data[i].uid + ',this)">删除</a></td>';
+                html += '<td> <a href="/useredit?id=' + data[i].uid + '">编辑</a> / <a href="javascript:;" onclick="del(' + data[i].uid + ',this)">删除</a></td>';
                 html += '</tr>';
             }
             //   alert(html);

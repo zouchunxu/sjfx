@@ -36,7 +36,7 @@ class UserController extends Controller
         if ($request->isMethod('get')) {
             return view('admin/userlist')->withUrl($request->url());
         } else {
-            $data = User::paginate(1500);
+            $data = User::query()->with('tallLevelUser')->paginate(1500);
             return response()->json(['data' => $data->toJson(), 'page' => $data->render()]);
         }
     }
