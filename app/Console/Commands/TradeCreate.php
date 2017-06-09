@@ -39,7 +39,7 @@ class TradeCreate extends Command
             if (array_get($data, 1)) {
                 $val = json_decode($data[1], true);
 
-                $exists = Trade::query()->where('id',$data['order_no'])->first();
+                $exists = Trade::query()->where('id',$val['order_no'])->first();
                 if(!empty($exists)){
                     continue;
                 }
