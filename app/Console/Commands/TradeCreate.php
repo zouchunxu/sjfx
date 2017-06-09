@@ -46,7 +46,7 @@ class TradeCreate extends Command
 
 
                 Trade::create([
-                    'id' =>  $data['order_no'],
+                    'id' =>  $val['order_no'],
                     'uid' => array_get($val,'extra_return_param'),
                     'price' =>  $val['order_amount']
                 ]);
