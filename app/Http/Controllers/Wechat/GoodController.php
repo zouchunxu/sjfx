@@ -24,7 +24,7 @@ class GoodController extends Controller
     {
         $category = $request->input('cid');
         return view('wechat.list')->with([
-            'lists' => Ware::query()->where(['category_id'=>$category])->get()
+            'lists' => Ware::query()->where('category_id',$category)->get()
         ]);
     }
 
@@ -33,11 +33,11 @@ class GoodController extends Controller
     {
         $uid = session('wechatDb.uid');
         $cid = $request->input('cid', 1);
-        $good = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
+        $model = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
             ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
             ->where('category_id', $cid)->where('uid', $uid);
 
-        $goods = $good->where('status', 0)->get();
+        $goods = $model->where('status', 0)->get();
 
         foreach ($goods as $good) {
             $time = intval($good->ware->trait['expired'] - ((time() - strtotime($good->created_at)) / 60 / 60));
@@ -48,8 +48,8 @@ class GoodController extends Controller
         }
 
         return view('wechat.my-good')->with([
-            'goods1' => $good->where('status', 0)->get(),
-            'goods2' => $good->where('status', 1)->get()
+            'goods1' => $model->where('status', 0)->get(),
+            'goods2' => $model->where('status', 1)->get()
         ]);
     }
 

@@ -55,14 +55,14 @@ class UserController extends Controller
     public function upd(Request $request)
     {
         if ($request->isMethod('post')) {
-            $this->validate($request, [
-                'name' => 'required|unique:users,name,' . $request->uid . ',uid|max:32',
-                'email' => 'unique:users,email,' . $request->uid . ',uid|email',
-//                'password' => 'confirmed',
-                'qq_code' => 'integer',
-                'phone' => 'unique:users,phone,' . $request->uid . ',uid',
-                'integral' => 'integer',
-            ]);
+//            $this->validate($request, [
+////                'name' => 'required|unique:users,name,' . $request->uid . ',uid|max:32',
+////                'email' => 'unique:users,email,' . $request->uid . ',uid|email',
+//////                'password' => 'confirmed',
+////                'qq_code' => 'integer',
+////                'phone' => 'unique:users,phone,' . $request->uid . ',uid',
+////                'integral' => 'integer',
+////            ]);
             if (User::where('uid', $request->uid)->update(array_unique($request->except(['uid', '_token'])))) {
                 $msg = '修改会员资料成功！';
             }else{

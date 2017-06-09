@@ -31,7 +31,7 @@ class Farmer extends BuyClass
                 'expired' => 24 * 7,
                 'status' => 0
             ]);
-            $this->user->incrementIntegral($price);
+//            $this->user->incrementIntegral($price);
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {

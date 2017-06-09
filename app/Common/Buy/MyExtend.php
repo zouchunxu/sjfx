@@ -26,7 +26,7 @@ class MyExtend extends BuyClass
             $extend->count += $count;
             $extend->save();
 
-            $this->user->incrementIntegral($price);
+//            $this->user->incrementIntegral($price);
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {

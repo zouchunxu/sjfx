@@ -39,7 +39,7 @@ class Normally extends BuyClass
                 'uid' => $this->user->uid,
                 'status' => 0
             ]);
-            $this->user->incrementIntegral($price);
+//            $this->user->incrementIntegral($price);
             $this->user->deductGold($price);
             $this->user->level += 1;
             $this->user->save();

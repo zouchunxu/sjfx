@@ -38,6 +38,18 @@ class TradeCreate extends Command
             $data = $redis->brPop('trade', 30);
             if (array_get($data, 1)) {
                 $val = json_decode($data[1], true);
+
+                $exists = Trade::query()->where('id',$data['order_no'])->first();
+                if(!empty($exists)){
+                    continue;
+                }
+
+
+                Trade::create([
+                    'id' =>  $data['order_no'],
+                    'uid' => array_get($val,'extra_return_param'),
+                    'price' =>  $val['order_amount']
+                ]);
                 var_export($val);
                 $trade = new Trade();
                 $trade->uid = array_get($val,'extra_return_param');

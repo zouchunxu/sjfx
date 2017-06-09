@@ -29,7 +29,7 @@ class Integral extends BuyClass
                 'ware_id' => $this->ware->id,
                 'status' => 0
             ]);
-            $this->user->incrementIntegral($subIntegral);
+//            $this->user->incrementIntegral($subIntegral);
             $this->user->deductGold($price);
             DB::commit();
         } catch (\Exception $e) {

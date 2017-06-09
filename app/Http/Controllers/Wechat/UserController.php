@@ -89,9 +89,7 @@ class UserController extends Controller
     public function anyCashList()
     {
         return view('wechat.cash-list')->with([
-            'lists' => UserWithdraw::query()->where([
-                'uid' => session('wechatDb.uid')
-            ])->get()
+            'lists' => UserWithdraw::query()->where( 'uid', session('wechatDb.uid'))->get()
         ]);
     }
 
@@ -145,9 +143,7 @@ class UserController extends Controller
     public function anyConvertList()
     {
         return view('wechat.convert-list')->with([
-            'lists' => ApplyIntegralShop::query()->with('ware')->where([
-                'uid' => session('wechatDb.uid')
-            ])->get()
+            'lists' => ApplyIntegralShop::query()->with('ware')->where( 'uid', session('wechatDb.uid'))->get()
         ]);
     }
 
