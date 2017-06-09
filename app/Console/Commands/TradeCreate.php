@@ -40,7 +40,9 @@ class TradeCreate extends Command
                 $val = json_decode($data[1], true);
                 var_export($val);
                 $trade = new Trade();
-                $trade->uid = $val['extra_return_param'];
+                $trade->uid = array_get($val,'extra_return_param');
+                if( empty($trade->uid))
+                    continue;
                 $trade->id = $val['order_no'];
                 $trade->price = $val['order_amount'];
                 $trade->save();
