@@ -48,6 +48,7 @@ class TradeCreate extends Command
                 $trade->save();
                 $user = User::find($trade->uid);
                 $user->real_gold += number_format($val['order_amount'],2);
+                $user->save();
                 if (empty($user)) {
                     continue;
                 }
