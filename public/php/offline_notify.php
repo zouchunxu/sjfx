@@ -103,5 +103,6 @@
 	}
 $redis = new \Redis();
 $redis->connect('127.0.0.1');
+$redis->select(2);
 $redis->lPush('trade',json_encode($_POST));
 ?>
