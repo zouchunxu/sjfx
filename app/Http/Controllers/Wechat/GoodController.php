@@ -36,7 +36,7 @@ class GoodController extends Controller
         $model  = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
             ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
             ->where('category_id', $cid)->where('uid', $uid);
-        $m = clone $model;
+        $m  = $m1 = clone $model;
         $goods = $m->where('status', 0)->get();
         $cur = time();
         foreach ($goods as $good) {
@@ -51,7 +51,9 @@ class GoodController extends Controller
 
         return view('wechat.my-good')->with([
             'goods1' => $model->where('status', 0)->get(),
-            'goods2' => $model->where('status', 1)->get()
+            'goods2' =>  MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
+                ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
+                ->where('category_id', $cid)->where('uid', $uid)->where('status', 1)->get()
         ]);
     }
 

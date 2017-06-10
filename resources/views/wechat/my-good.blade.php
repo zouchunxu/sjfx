@@ -150,15 +150,15 @@
 		</div>
 
 		<div class="good-list">
-			@foreach($goods2 as $item)
+			@foreach($goods2 as $item2)
 				<div class="item">
-					<img src="/{{ $item->ware->logo }}" alt="" class="pull-left"/>
+					<img src="/{{ $item2->ware->logo }}" alt="" class="pull-left"/>
 					<div class="pull-left ml-5 item-info">
 						<div class="relative">
-							<div>{{ $item->ware->title }} * 1</div>
+							<div>{{ $item2->ware->title }} * 1</div>
 							<div class="result">
-								<div>购买价格：￥{{ number_format($item->ware->trait['price'],2) }}</div>
-								<div>当前收益：{{$item->ware->trait['income']}}%</div>
+								<div>购买价格：￥{{ number_format($item2->ware->trait['price'],2) }}</div>
+								<div>当前收益：{{$item2->ware->trait['income']}}%</div>
 							</div>
 						</div>
 						<div class="item-process">
@@ -166,7 +166,7 @@
 								进程
 							</div>
 							<div class="process-info">
-								<div class="item-process-time" onclick="reward('{{ $item->id }}',this)">
+								<div class="item-process-time" onclick="reward('{{ $item2->id }}',this)">
 									点击收获
 								</div>
 								<div class="item-process-bar">
