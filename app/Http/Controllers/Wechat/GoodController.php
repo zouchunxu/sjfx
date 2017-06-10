@@ -33,15 +33,17 @@ class GoodController extends Controller
     {
         $uid = session('wechatDb.uid');
         $cid = $request->input('cid', 1);
-        $model = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
+        $model  = MyGood::query()->with('ware')->leftJoin('wares', 'wares.id', '=', 'ware_id')
             ->select("my_goods.*")->orderBy('my_goods.id', 'desc')
             ->where('category_id', $cid)->where('uid', $uid);
-
-        $goods = $model->where('status', 0)->get();
-
+        $m = clone $model;
+        $goods = $m->where('status', 0)->get();
+        $cur = time();
         foreach ($goods as $good) {
-            $time = intval($good->ware->trait['expired'] - ((time() - strtotime($good->created_at)) / 60 / 60));
-            if ($time < 0) {
+            $ware = $good->ware;
+            $time = strtotime("{$good->created_at} +{$ware->trait['expired']} day");
+//            $time = intval($good->ware->trait['expired'] - ((time() - strtotime($good->created_at)) / 60 / 60));
+            if ($time <= $cur) {
                 $good->status = 1;
             }
             $good->save();
