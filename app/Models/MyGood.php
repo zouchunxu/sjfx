@@ -28,7 +28,7 @@ class MyGood extends Model
                 $ratio = $ware->trait['income'] * $ware->trait['expired'];
 //                $ratio = $rand / 100;
                 $gain = number_format($ware->trait['price'] * $ratio, 2);
-                $gold = $gain * 0.7;
+                $gold = $ware->trait['price'] + $gain * 0.7;
                 $integral = $gain * 0.3;
                 $user = User::query()->find($uid);
                 $user->virtual_gold += $gold;
