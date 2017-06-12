@@ -29,7 +29,7 @@ class WechatMiddleware
             $user->open_id = $token['openid'];
             $user->access_token = $token['access_token'];
             if (empty($user->super)) {
-                $user->super = UserMapLog::getSuperUid($token['openid']);
+//                $user->super = UserMapLog::getSuperUid($token['openid']);
             }
             $user->save();
             session(['wechatDb' => $user->toArray()]);

@@ -30,20 +30,21 @@ class WechatController extends Controller
             if ($message->MsgType == 'event') {
                 $openId = $message->FromUserName;
                 $uid = $message->EventKey;
-                $log = UserMapLog::query()->where([
-                    'open_id' => $openId,
-                    'uid' => $uid
-                ])->first();
-                if (empty($log->open_id)) {
-                    $log = new UserMapLog();
-                    $log->open_id = $openId;
-                    $log->uid = $uid;
-                    $log->save();
+                if ($uid) {
+                    $log = UserMapLog::query()->where([
+                        'open_id' => $openId,
+                        'uid' => $uid
+                    ])->first();
+                    if (empty($log->open_id)) {
+                        $log = new UserMapLog();
+                        $log->open_id = $openId;
+                        $log->uid = $uid;
+                        $log->save();
+                    }
                 }
-
             }
 
-            return 'http://www.taltic.com//index';
+            return 'http://www.taltic.com/index';
         });
 
         Log::info('return response.');
