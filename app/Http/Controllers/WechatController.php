@@ -30,7 +30,7 @@ class WechatController extends Controller
             if ($message->MsgType == 'event') {
                 $openId = $message->FromUserName;
                 $uid = $message->EventKey;
-                if ($uid) {
+                if (!empty($uid)) {
                     $log = UserMapLog::query()->where([
                         'open_id' => $openId,
                         'uid' => $uid
