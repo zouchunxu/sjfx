@@ -84,13 +84,14 @@ class GoodController extends Controller
     public function anyBuy(Request $request)
     {
         $wareId = $request->input('ware_id');
+        $count = $request->input('count',1);
         $uid = session('wechatDb.uid');
         try {
             $ware = Ware::find($wareId);
             $user = User::find($uid);
             $map = config('categorytypes.map');
             $class = array_get($map, $ware->getCatType());
-            $buy = new $class($ware, $user);
+            $buy = new $class($ware, $user,$count);
             $buy->buy();
         } catch (\Exception $exception) {
             return [

@@ -93,7 +93,7 @@
     <div class="good-footer">
         <div class="col-xs-6 good-attr">
         <div class="form-inline">
-        数量：<input type="number" class="form-control input-sm" value="1" disabled/>
+        数量：<input type="number" id="number" class="form-control input-sm" value="1" max=9 min=1/>
         </div>
         </div>
         <div class="col-xs-6">
@@ -112,7 +112,12 @@
     var width = $('body').width();
     $("img").width(width);
     $("#buy").click(function(){
-        $.post("/good/buy", {'ware_id': wareId}, function (data) {
+        var count = $("#number").val();
+        if(count > 9){
+            layer.msg('购买数量不能超过9!');
+            return;
+        }
+        $.post("/good/buy", {'ware_id': wareId,'count':count}, function (data) {
             layer.msg(data.msg);
         });
     });

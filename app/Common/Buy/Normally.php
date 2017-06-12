@@ -12,13 +12,13 @@ class Normally extends BuyClass
     protected function _buy()
     {
         $trait = $this->ware->trait;
-        $price = $trait['price'];
+        $price = $trait['price'] * $this->count;
         $userPrice = $this->user->getAllGold();
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
         $defaultCount = 9;
-        $goodCount = MyGood::query()->where(['uid' => $this->user->uid])->count();
+        $goodCount = MyGood::query()->where(['uid' => $this->user->uid])->sum('count');
         $buyCount = Extend::query()->where(['uid' => $this->user->uid])->first();
         if($buyCount){
             $buyCount = $buyCount->value('count');
@@ -37,7 +37,8 @@ class Normally extends BuyClass
             MyGood::create([
                 'ware_id' => $this->ware->id,
                 'uid' => $this->user->uid,
-                'status' => 0
+                'status' => 0,
+                'count' => $this->count
             ]);
 //            $this->user->incrementIntegral($price);
             $this->user->deductGold($price);

@@ -22,10 +22,13 @@ abstract class BuyClass
      */
     protected $user;
 
-    public function __construct(Ware $ware, User $user)
+    protected $count;
+
+    public function __construct(Ware $ware, User $user, $count = 1)
     {
         $this->ware = $ware;
         $this->user = $user;
+        $this->count = $count;
     }
 
     public function buy()

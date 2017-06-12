@@ -63,7 +63,7 @@
 				width: 100%; height: 15px;}
 		.item .relative>div:first-child {height: 40px; line-height: 40px; width: 40%;}
 		.item .item-process>div:first-child {line-height: 50px}
-		.item-process-time {color: green; font-size: 12px; position: relative; left: 10px;}
+		.item-process-time {color: green; font-size: 14px; position: relative; left: 10px;}
 		.item-process-bar {
 			height: 10px;
 		    margin-left: 10px;
@@ -115,7 +115,7 @@
 					<img src="/{{ $item->ware->logo }}" alt="" class="pull-left"/>
 					<div class="pull-left ml-5 item-info">
 						<div class="relative">
-							<div>{{ $item->ware->title }} * 1</div>
+							<div>{{ $item->ware->title }} * {{ $item->count }}</div>
 							<div class="result">
 								<div>购买价格：￥{{ number_format($item->ware->trait['price'],2) }}</div>
 								<div>每天收益：{{$item->ware->trait['income']}}%</div>
