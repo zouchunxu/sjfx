@@ -27,12 +27,12 @@ class MyGood extends Model
             try {
                 $ratio = $ware->trait['income'] * $ware->trait['expired'] * $good->count;
 //                $ratio = $rand / 100;
-                $gain = number_format($ware->trait['price'] * $ratio, 2);
+                $gain = $ware->trait['price'] * $ratio;
                 $gold = $ware->trait['price'] + $gain * 0.7;
                 $integral = $gain * 0.3;
                 $user = User::query()->find($uid);
-                $user->virtual_gold += $gold;
-                $user->integral += $integral;
+                $user->virtual_gold = floatval($user->virtual_gold + $gold);
+                $user->integral = floatval($user->integral + $integral);
                 $user->save();
                 $good->delete();
                 session(['wechatDb' => $user->toArray()]);
