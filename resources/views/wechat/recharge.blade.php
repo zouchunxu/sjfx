@@ -43,7 +43,7 @@
         location.href = 'http://www.taltic.com/php/bank_pay.php?price='+$("#price").val()+'&uid={{ session('wechatDb.uid') }}'
     })
     $("#help").click(function () {
-        location.href = 'http://www.taltic.com/pay_help.jpeg';
+        location.href = 'http://www.taltic.com/im/pay-step.jpeg';
     })
 
 </script>
