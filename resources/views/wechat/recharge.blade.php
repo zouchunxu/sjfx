@@ -9,12 +9,20 @@
     <style>
         .table {margin-bottom: 1px!important;}
         .btn-full {width: 100%}
+        .btn{
+            margin: 8px 0;
+        }
     </style>
 </head>
 <body>
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="margin-bottom: 6px">
         <tbody>
+        <tr>
+            <td colspan="2" align="center" style="overflow: hidden">
+                <img src="http://www.taltic.com/assets/img/cash.png" height="200px" alt="">
+            </td>
+        </tr>
         {{--<tr>--}}
         {{--<td>手续费</td>--}}
         {{--<td></td>--}}
@@ -26,7 +34,6 @@
         </tbody>
     </table>
     <button class="btn btn-success btn-flat btn-full" id="apply">充值</button>
-    <div style="height: 5px"></div>
     <button class="btn btn-primary btn-flat btn-full" id="help">如何充值</button>
 </div>
 </body>
