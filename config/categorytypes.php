@@ -18,7 +18,7 @@ return [
             'income' => [
                 'name' => '每天收益',
                 'desc' => '每天收益',
-                'unit' => '%'
+                'unit' => ''
             ],
             'price' => [
                 'name' => '金币',

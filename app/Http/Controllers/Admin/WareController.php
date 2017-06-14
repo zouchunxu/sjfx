@@ -33,7 +33,7 @@ class WareController extends Controller
             ]);
             Ware::create($data);
             if ($imgFile) {
-                compressedImage($imgFile,0.6);
+//                compressedImage($imgFile,0.6);
             }
 
             return response()->json($return);

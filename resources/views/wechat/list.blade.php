@@ -8,7 +8,7 @@
 <body>
 <div class="list">
     @foreach($lists as $list)
-        <div class="list-item">
+        <div class="list-item"  onclick="location.href='/good/detail?id={{ $list->id }}'">
             <div class="logo">
                 <img src="/{{ $list->logo }}" alt="">
             </div>

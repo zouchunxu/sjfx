@@ -27,9 +27,9 @@ class WechatController extends Controller
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
 //        $Wechat = app('Wechat');
         $this->wechat->server->setMessageHandler(function ($message) {
-            if ($message->MsgType == 'event') {
+//            if ($message->MsgType == 'event') {
                 $openId = $message->FromUserName;
-                $uid = $message->EventKey;
+                $uid = ltrim($message->EventKey,'qrscene_');
                 if ($uid != 0) {
                     $log = UserMapLog::query()->where([
                         'open_id' => $openId,
@@ -42,7 +42,7 @@ class WechatController extends Controller
                         $log->save();
                     }
                 }
-            }
+//            }
 
             return 'http://www.taltic.com/index';
         });

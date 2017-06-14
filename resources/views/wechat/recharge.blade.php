@@ -26,6 +26,8 @@
         </tbody>
     </table>
     <button class="btn btn-success btn-flat btn-full" id="apply">充值</button>
+    <div style="height: 5px"></div>
+    <button class="btn btn-primary btn-flat btn-full" id="help">如何充值</button>
 </div>
 </body>
 @include('wechat.bottom-nav')
@@ -33,5 +35,9 @@
     $("#apply").click(function () {
         location.href = 'http://www.taltic.com/php/bank_pay.php?price='+$("#price").val()+'&uid={{ session('wechatDb.uid') }}'
     })
+    $("#help").click(function () {
+        location.href = 'http://www.taltic.com/pay_help.jpeg';
+    })
+
 </script>
 </html>

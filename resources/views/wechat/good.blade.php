@@ -36,7 +36,7 @@
             <div class="goods">
                 @if(!empty($normallyShop))
                     @foreach($normallyShop as $list)
-                        <div class="list-item">
+                        <div class="list-item"  onclick="location.href='/good/detail?id={{ $list->id }}'">
                             <div class="logo">
                                 <img src="{{ $list->logo }}" alt="">
                             </div>
@@ -67,7 +67,7 @@
             <div class="goods">
                 @if(!empty($integralShop))
                     @foreach($integralShop as $list)
-                        <div class="list-item">
+                        <div class="list-item"  onclick="location.href='/good/detail?id={{ $list->id }}'">
                             <div class="logo">
                                 <img src="{{ $list->logo }}" alt="">
                             </div>
@@ -98,7 +98,7 @@
             <div class="goods">
                 @if(!empty($otherShop))
                     @foreach($otherShop as $list)
-                        <div class="list-item">
+                        <div class="list-item"  onclick="location.href='/good/detail?id={{ $list->id }}'">
                             <div class="logo">
                                 <img src="{{ $list->logo }}" alt="">
                             </div>
