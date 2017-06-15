@@ -9,7 +9,6 @@
  **/
 $redis = new \Redis();
 $redis->connect('127.0.0.1');
-$redis->set('test','abc');
 //////////////////////////	接收多的宝返回通知数据  /////////////////////////////////
 /**
 获取订单支付成功之后，多的宝通知服务器以post方式返回来的订单通知数据，参数详情请看接口文档,
@@ -86,7 +85,7 @@ $redis->set('test','abc');
 	
 /////////////////////////////   RSA-S验证  /////////////////////////////////
 
-    
+
 	$dinpay_public_key = openssl_get_publickey($dinpay_public_key);
 	
 	$flag = openssl_verify($signStr,$dinpaySign,$dinpay_public_key,OPENSSL_ALGO_MD5);
@@ -94,16 +93,16 @@ $redis->set('test','abc');
 	
 ///////////////////////////   响应“SUCCESS” /////////////////////////////
 
-	
+
 	if($flag){
-	    file_put_contents('/tmp/test.log',json_encode($_POST));
+        $redis->lPush('trade',json_encode($_POST));
 		echo"SUCCESS";
 
 	}else{
-        file_put_contents('/tmp/test.log',json_encode($_POST));
-		echo"Verification Error"; 
+        file_put_contents('/tmp/test.log',strval($flag).'Verification Error'.json_encode($_POST),FILE_APPEND);
+		echo"Verification Error";
 	}
 
-$redis->lPush('trade',json_encode($_POST));
+
 
 ?>

@@ -77,10 +77,18 @@
     </div>
     @if(is_array($good->trait))
         @foreach($good->trait as $key => $val)
-            <div class="good-attr">
-                <span>{{ !empty($types[$key]) ? $types[$key]['desc'] : '属性'}}：</span>
-                {{ $val }}{{ !empty($types[$key]['unit']) ? $types[$key]['unit'] : '' }}
-            </div>
+            @if($key == 'income')
+                <div class="good-attr">
+                    <span>{{ !empty($types[$key]) ? $types[$key]['desc'] : '属性'}}：</span>
+                    {{ $val*100 }}{{ !empty($types[$key]['unit']) ? $types[$key]['unit'] : '' }}
+                </div>
+            @else
+                <div class="good-attr">
+                    <span>{{ !empty($types[$key]) ? $types[$key]['desc'] : '属性'}}：</span>
+                    {{ $val }}{{ !empty($types[$key]['unit']) ? $types[$key]['unit'] : '' }}
+                </div>
+            @endif
+
 
         @endforeach
     @endif

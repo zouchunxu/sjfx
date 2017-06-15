@@ -1,5 +1,19 @@
 <? header("content-Type: text/html; charset=UTF-8");?>
 <?php
+
+
+$redis = new \Redis();
+$redis->connect('127.0.0.1');
+
+$key = 'pay:'.$_GET['uid'];
+
+if ($redis->get($key) > 5000) {
+    die('每个用户最多充值5000！');
+}
+$redis->incrByFloat($key, floatval($_GET['price']));
+
+
+
 /* *
  *功能：多的宝网银支付接口
  *版本：3.0

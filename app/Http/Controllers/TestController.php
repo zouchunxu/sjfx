@@ -38,7 +38,6 @@ class TestController extends Controller
     {
         $pay = new Pay2();
 
-
         return view('test.test')->with($pay->qrcode([
             'notify_url' => 'http://www.taltic.com/test/demo',
             'interface_version' => 'V3.0',

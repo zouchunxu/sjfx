@@ -16,9 +16,9 @@ return [
                 'unit' => '天'
             ],
             'income' => [
-                'name' => '每天收益',
-                'desc' => '每天收益',
-                'unit' => ''
+                'name' => '收益',
+                'desc' => '收益',
+                'unit' => '‰'
             ],
             'price' => [
                 'name' => '金币',

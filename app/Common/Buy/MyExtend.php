@@ -9,8 +9,8 @@ class MyExtend extends BuyClass
     protected function _buy()
     {
         $trait = $this->ware->trait;
-        $price = $trait['price'];
-        $count = $trait['count'];
+        $price = $trait['price'] * $this->count;
+        $count = $trait['count'] * $this->count;
 
         $userPrice = $this->user->getAllGold();
         if ($price > $userPrice) {

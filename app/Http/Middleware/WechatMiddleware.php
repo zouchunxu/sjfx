@@ -25,6 +25,7 @@ class WechatMiddleware
             $user->email = strval($wechat['email']);
             $user->nick_name = strval($wechat['nickname']);
             $user->head = $wechat['avatar'];
+            $user->virtual_gold = 2;  //新增用户默认增加2个金币
             $user->sex = $wechat['original']['sex'] == 1 ? '男' : '女';
             $user->open_id = $token['openid'];
             $user->access_token = $token['access_token'];
