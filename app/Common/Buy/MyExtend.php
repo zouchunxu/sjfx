@@ -16,7 +16,6 @@ class MyExtend extends BuyClass
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
-
         try {
             DB::beginTransaction();
             $extend = Extend::query()->firstOrNew([

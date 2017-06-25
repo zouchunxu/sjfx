@@ -2,6 +2,6 @@
 return [
     'admin' => [
         'username' => 'admin',
-        'password' => 'admin'
+        'password' => 'xianju999'
     ]
 ];

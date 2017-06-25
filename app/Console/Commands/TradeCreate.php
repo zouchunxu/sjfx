@@ -45,11 +45,11 @@ class TradeCreate extends Command
                 }
 
 
-                Trade::create([
-                    'id' =>  $val['order_no'],
-                    'uid' => array_get($val,'extra_return_param'),
-                    'price' =>  $val['order_amount']
-                ]);
+//                Trade::create([
+//                    'id' =>  $val['order_no'],
+//                    'uid' => array_get($val,'extra_return_param'),
+//                    'price' =>  $val['order_amount']
+//                ]);
                 var_export($val);
                 $trade = new Trade();
                 $trade->uid = array_get($val,'extra_return_param');
@@ -72,13 +72,13 @@ class TradeCreate extends Command
                 if (empty($oneUser)) {
                     continue;
                 }
-                $oneUser->welfare += number_format($val['order_amount'] * 0.03, 2);
+                $oneUser->welfare += number_format($val['order_amount'] * 0.04, 2) < 0.01 ? 0.01 : number_format($val['order_amount'] * 0.04, 2);
                 //二级
                 $twoUser = $oneUser->tallLevelUser;
                 if (empty($twoUser)) {
                     continue;
                 }
-                $twoUser->welfare += number_format($val['order_amount'] * 0.03, 2);
+                $twoUser->welfare += number_format($val['order_amount'] * 0.02, 2) < 0.01 ? 0.01 : number_format($val['order_amount'] * 0.02, 2);
                 var_dump($twoUser->save());
 
                 //三级
@@ -86,7 +86,7 @@ class TradeCreate extends Command
                 if (empty($threeUser)) {
                     continue;
                 }
-                $threeUser->welfare += number_format($val['order_amount'] * 0.03, 2);
+                $threeUser->welfare += number_format($val['order_amount'] * 0.01, 2) < 0.01 ? 0.01 : number_format($val['order_amount'] * 0.02, 2);
                 var_dump($threeUser->save());
 
 

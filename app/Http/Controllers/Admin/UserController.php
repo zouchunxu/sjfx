@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Common\RedisHelp;
+use App\Models\Trade;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,6 +39,12 @@ class UserController extends Controller
             return view('admin/userlist')->withUrl($request->url());
         } else {
             $data = User::query()->with('tallLevelUser')->paginate(1500);
+            foreach ($data as &$val){
+                $price = Trade::query()->where('uid',$val->uid)->sum('price');
+                $val->gold = $val->getAllGold();
+                $val->pay = $price;
+            }
+
             return response()->json(['data' => $data->toJson(), 'page' => $data->render()]);
         }
     }

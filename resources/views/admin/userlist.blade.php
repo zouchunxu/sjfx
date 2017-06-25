@@ -23,7 +23,7 @@
                             会员名称
                         </th>
                         <th class="text-center">
-                            会员积分
+                            已充金额
                         </th>
                         <th class="text-center">
                             昵称
@@ -41,7 +41,7 @@
                             手机号码
                         </th>
                         <th class="text-center">
-                            qq号码
+                            金币数量
                         </th>
                         <th class="text-center">
                             操作
@@ -94,13 +94,13 @@
                 html += '<tr class="text-center">';
                 html += '<td>' + (++count) + '</td>';
                 html += '<td>' + data[i].name + '</td>';
-                html += '<td>' + data[i].integral + '</td>';
+                html += '<td>' + data[i].pay + '</td>';
                 html += '<td>' + data[i].nick_name + '</td>';
                 html += '<td>' + data[i].actual_name + '</td>';
                 html += '<td>' + (data[i].tall_level_user?data[i].tall_level_user.nick_name:'') + '</td>';
                 html += '<td>' + data[i].id_card + '</td>';
-                html += '<td>' + data[i].qq_code + '</td>';
                 html += '<td>' + data[i].phone + '</td>';
+                html += '<td>' + data[i].gold + '</td>';
                 html += '<td> <a href="/useredit?id=' + data[i].uid + '">编辑</a> / <a href="javascript:;" onclick="del(' + data[i].uid + ',this)">删除</a></td>';
                 html += '</tr>';
             }

@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <div class="tip">
-        <span class="fa fa-volume-up"></span>&nbsp;test
+        <span class="fa fa-volume-up"></span>&nbsp;欢迎进入仙居果园农场
     </div>
     <div class="banner">
         <ul>

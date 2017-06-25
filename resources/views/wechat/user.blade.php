@@ -31,12 +31,12 @@
                 <span><strong
                             class="green">•</strong> 推荐人：{{ is_object($user->superInfo) ? $user->superInfo->nick_name : '无' }}</span>
             </div>
-            <div class="col-2 mb-5">
-                <span><strong class="green">•</strong> 平台总人数：{{ $count }}</span>
-            </div>
-            <div class="col-2 mb-5">
-                <span><strong class="green">•</strong> 第几个进入：{{ $user->uid }} 位</span>
-            </div>
+            {{--<div class="col-2 mb-5">--}}
+                {{--<span><strong class="green">•</strong> 平台总人数：{{ $count }}</span>--}}
+            {{--</div>--}}
+            {{--<div class="col-2 mb-5">--}}
+                {{--<span><strong class="green">•</strong> 第几个进入：{{ $user->uid }} 位</span>--}}
+            {{--</div>--}}
         </div>
     </div>
 

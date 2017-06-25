@@ -17,20 +17,22 @@ class Normally extends BuyClass
         if ($price > $userPrice) {
             throw new BuyException('金币不足，请先充值！');
         }
-        $defaultCount = 9;
+        $defaultCount = 50;
         $goodCount = MyGood::query()->where(['uid' => $this->user->uid])->sum('count');
-        $buyCount = Extend::query()->where(['uid' => $this->user->uid])->first();
-        if ($buyCount) {
-            $buyCount = $buyCount->value('count');
-        } else {
-            $buyCount = 0;
-        }
+        $buyCount = intval(Extend::query()->where(['uid' => $this->user->uid])->sum('count'));
 
         $redis = (new RedisHelp())->getRedis();
         $key = "buy:count:{$this->user->uid}:{$this->ware->id}";
         if ($redis->get($key) > 2000) {
             throw new BuyException('招财树限量2000！');
         }
+
+        $key1 = 'pay:'.$this->user->uid;
+
+        if ($redis->get($key1) > 5000) {
+            die('每个用户最多消费5000！');
+        }
+        $redis->incrByFloat($key, floatval($price));
 
         if ($this->ware->id == 26) {
             $redis->incrBy($key, $this->count);

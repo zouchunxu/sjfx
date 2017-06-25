@@ -44,7 +44,7 @@ class WechatController extends Controller
                 }
 //            }
 
-            return 'http://www.taltic.com/index';
+            return '欢迎进入仙居果园农场';
         });
 
         Log::info('return response.');

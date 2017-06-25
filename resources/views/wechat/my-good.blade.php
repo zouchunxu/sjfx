@@ -117,8 +117,8 @@
 						<div class="relative">
 							<div>{{ $item->ware->title }} * {{ $item->count }}</div>
 							<div class="result">
-								<div>购买价格：￥{{ number_format($item->ware->trait['price'],2) }}</div>
-								<div>每天收益：{{$item->ware->trait['income']}}%</div>
+								<div>购买价格：￥{{ number_format(floatval($item->ware->trait['price']),2) }}</div>
+								<div>收益：{{$item->ware->trait['income'] * 100}}%</div>
 							</div>
 						</div>
 						<div class="item-process">
@@ -127,7 +127,7 @@
 							</div>
 							<div class="process-info">
 								<div class="item-process-time">
-									{{ intval(($item->ware->trait['expired']*24)-((time()-strtotime($item->created_at))/60/60)) }}小时后成熟
+									{{ intval(($item->ware->trait['expired']*24)-((time()-strtotime($item->created_at))/60/60)) }}小时{{intval((($item->ware->trait['expired']*24*86400)-((time()-strtotime($item->created_at))/60))%60)}}分钟后成熟
 {{--									{{ $item->created_at }}--}}
 								</div>
 								<div class="item-process-bar">
@@ -155,10 +155,10 @@
 					<img src="/{{ $item2->ware->logo }}" alt="" class="pull-left"/>
 					<div class="pull-left ml-5 item-info">
 						<div class="relative">
-							<div>{{ $item2->ware->title }} * 1</div>
+							<div>{{ $item2->ware->title }} *  {{ $item2->ware->count }}</div>
 							<div class="result">
-								<div>购买价格：￥{{ number_format($item2->ware->trait['price'],2) }}</div>
-								<div>当前收益：{{$item2->ware->trait['income']}}%</div>
+								<div>购买价格：￥{{ number_format(floatval($item2->ware->trait['price']),2) }}</div>
+								<div>收益：{{$item2->ware->trait['income'] * 100}}%</div>
 							</div>
 						</div>
 						<div class="item-process">

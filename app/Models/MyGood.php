@@ -25,11 +25,14 @@ class MyGood extends Model
         if ($time <= $cur) {
             //增加用户收益
             try {
-                $ratio = $ware->trait['income'] * $ware->trait['expired'] * $good->count;
+                $ratio = $ware->trait['income'] * $good->count;
 //                $ratio = $rand / 100;
                 $gain = $ware->trait['price'] * $ratio;
-                $gold = $ware->trait['price'] + $gain * 0.7;
-                $integral = $gain * 0.3;
+
+                $rewardGold =  $gain * 0.7 < 0.01?0.01* $good->count: $gain * 0.7 ;
+                $rewardIntegral =  $gain * 0.3 < 0.01?0.01* $good->count: $gain * 0.3 ;
+                $gold = $ware->trait['price'] * $good->count +$rewardGold;
+                $integral =$rewardIntegral;
                 $user = User::query()->find($uid);
                 $user->virtual_gold = floatval($user->virtual_gold + $gold);
                 $user->integral = floatval($user->integral + $integral);

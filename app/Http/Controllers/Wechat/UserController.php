@@ -81,8 +81,7 @@ class UserController extends Controller
     public function anyUserInfo()
     {
         $uid = session('wechatDb.uid');
-        $extend = Extend::query()->where(['uid' => $uid])->first();
-        $count = intval(array_get($extend,'count'));
+        $count = intval(Extend::query()->where(['uid' => $uid])->sum('count'));
         return view('wechat.user-info')->with(['goodCount' => $count + 50]);
     }
 
@@ -103,13 +102,13 @@ class UserController extends Controller
                     'msg' => '提现金额必须大于50！'
                 ];
             }
-            if ($user->real_gold < $request->input('price')) {
+            if ($user->getAllGold() < $request->input('price')) {
                 return [
                     'error' => 1,
                     'msg' => '金币余额不足！'
                 ];
             }
-            $user->real_gold -= $request->input('price');
+            $user->deductGold($request->input('price'));
             $user->save();
             if (UserWithdraw::create(array_merge($request->except('_token'), [
                 'uid' => session('wechatDb.uid')
