@@ -29,14 +29,17 @@ class MyGood extends Model
 //                $ratio = $rand / 100;
                 $gain = $ware->trait['price'] * $ratio;
 
-                $rewardGold =  $gain * 0.7 < 0.01?0.01* $good->count: $gain * 0.7 ;
-                $rewardIntegral =  $gain * 0.3 < 0.01?0.01* $good->count: $gain * 0.3 ;
-                $gold = $ware->trait['price'] * $good->count +$rewardGold;
-                $integral =$rewardIntegral;
+                $rewardGold = $gain * 0.7 < 0.01 ? 0.01 * $good->count : $gain * 0.7;
+                $rewardIntegral = $gain * 0.3 < 0.01 ? 0.01 * $good->count : $gain * 0.3;
+                $gold = $ware->trait['price'] * $good->count + $rewardGold;
+                $integral = $rewardIntegral;
                 $user = User::query()->find($uid);
                 $user->virtual_gold = floatval($user->virtual_gold + $gold);
                 $user->integral = floatval($user->integral + $integral);
-                $user->save();
+                if ($ware->trait['price'] > 0) {
+                    $user->save();
+                }
+
                 $good->delete();
                 session(['wechatDb' => $user->toArray()]);
             } catch (\Exception $exception) {

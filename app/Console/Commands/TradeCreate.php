@@ -86,7 +86,7 @@ class TradeCreate extends Command
                 if (empty($threeUser)) {
                     continue;
                 }
-                $threeUser->welfare += number_format($val['order_amount'] * 0.01, 2) < 0.01 ? 0.01 : number_format($val['order_amount'] * 0.02, 2);
+                $threeUser->welfare += number_format($val['order_amount'] * 0.01, 2) < 0.01 ? 0.01 : number_format($val['order_amount'] * 0.01, 2);
                 var_dump($threeUser->save());
 
 
